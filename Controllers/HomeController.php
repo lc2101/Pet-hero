@@ -36,21 +36,25 @@
                 
                 $ownerdao= new OwnerDAO();
                 $ownerI=$ownerdao->GetByEmail($email);
+                
+                
                 $watcherdao= new WatcherDAO();
                 $watcherI=$watcherdao->GetByEmail($email);
                 
-                if(($ownerI==NULL || $owner->getPassword()!=$password) && ($watcherI==NULL || $watcher->getPassword()!=$password))
+                if(($ownerI==NULL) && ($watcherI==NULL))
                 {
-                
-                header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
+                    
+                    header("location: " . FRONT_ROOT . "Home/ShowLogin");
+                    
                 }else{
-                   
-                   if($ownerI->getPassword()==$password)
+                    
+                   if($ownerI->getPassword() === $password)
                     {
+                        
                         session_start();
                         $_SESSION['id']=$ownerI->getId();
                         header("location: " . FRONT_ROOT . "Owner/HomeOwner");
-                    }elseif($watcherI->getPassword()==$password)
+                    }elseif($watcherI->getPassword()===$password)
                     {
                         session_start();
                         $_SESSION['id']=$watcherI->getId();
@@ -60,7 +64,8 @@
             }   catch(Exception $e){
                 
                 throw $e;
-                header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
+                
+                //header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
             }
             
 

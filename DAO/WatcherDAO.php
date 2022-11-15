@@ -64,7 +64,7 @@
          $watcher = new Watcher();
          $watcher->setId($resultSet["idwatchers"]);
          $watcher->setName($resultSet["name"]);
-         $watcher->setLastName($resultSet["lastName"] );
+         $watcher->setLastName($resultSet["lastName"]);
          $watcher->setBirthDay($resultSet["birthDay"]);
          $watcher->setEmail($resultSet["email"]);
          $watcher->setDni($resultSet["dni"]);         
@@ -106,13 +106,15 @@
         {
             $watchersList = array();
             
+            
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM watchers WHERE email = :email ";
+                $query = "SELECT * FROM watchers WHERE email = '$email'";
                 $resultSet = $this->connection->Execute($query);
                 if(empty($resultSet))
                 {
+                  
                  return null;
                 }else{
                     foreach($resultSet as $row) 

@@ -79,18 +79,52 @@ class OwnerDao
             $query = "SELECT * FROM owners WHERE idowners ='$id'";
             $resultSet = $this->connection->Execute($query);
                 
-            foreach ($resultSet as $row) 
+            if(empty($resultSet))
+            {
+                return null;
+            }else{
+                foreach ($resultSet as $row) 
             {
                 $owner= $this->LoadData($row);
                 array_push($ownersList, $owner);
             }
-            return $ownersList[0];    
+            return $ownersList[0];  
+            }  
         }
         catch (Exception $e)
         {
             throw $e;
         }
     }
+    public function GetByEmail($email)
+        {
+            $ownersList = array();
+            
+            try 
+            {
+                $this->connection = Connection::GetInstance();
+                $query = "SELECT * FROM owners WHERE email = :email ";
+                $resultSet = $this->connection->Execute($query);
+                if(empty($resultSet))
+                {
+                 return null;
+                }else{
+                    foreach($resultSet as $row) 
+                {
+                    $owner = $this->LoadData($row);
+                    array_push($ownersList, $owner);
+                }
+
+                return $ownersList[0];  
+                } 
+            }
+            catch (Exception $e) 
+            {
+                throw $e;
+            }
+
+           
+        }
 }
 
 

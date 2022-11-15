@@ -76,27 +76,61 @@
          return $watcher;
      }
      public function GetById($id){
- 
-         $watchersList = array();
- 
-         try
-         {
-             $this->connection = Connection::GetInstance();
-             $query = "SELECT * FROM watchers WHERE idwatchers ='$id'";
-             $resultSet = $this->connection->Execute($query);
-                 
-             foreach ($resultSet as $row) 
-             {
-                 $watcher= $this->LoadData($row);
-                 array_push($watchersList, $watcher);
-             }
-             return $watchersList[0];    
-         }
-         catch (Exception $e)
-         {
-             throw $e;
-         }
-     }
+
+        $watchersList = array();
+
+        try
+        {
+            $this->connection = Connection::GetInstance();
+            $query = "SELECT * FROM watchers WHERE idwatchers ='$id'";
+            $resultSet = $this->connection->Execute($query);
+                
+            if(empty($resultSet))
+            {
+                return null;
+            }else{
+                foreach ($resultSet as $row) 
+            {
+                $watcher= $this->LoadData($row);
+                array_push($ownersList, $watcher);
+            }
+            return $watchersList[0];  
+            }  
+        }
+        catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
+    public function GetByEmail($email)
+        {
+            $watchersList = array();
+            
+            try 
+            {
+                $this->connection = Connection::GetInstance();
+                $query = "SELECT * FROM watchers WHERE email = :email ";
+                $resultSet = $this->connection->Execute($query);
+                if(empty($resultSet))
+                {
+                 return null;
+                }else{
+                    foreach($resultSet as $row) 
+                {
+                    $watcher = $this->LoadData($row);
+                    array_push($watchersList, $watcher);
+                }
+
+                return $watchersList[0];  
+                } 
+            }
+            catch (Exception $e) 
+            {
+                throw $e;
+            }
+
+           
+        }
  }
  
  

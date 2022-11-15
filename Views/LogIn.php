@@ -10,7 +10,7 @@
 </head>
 <body>
     <div>
-        <form action="../Controllers/login-action.php" method="post">
+        <form action=<?php echo FRONT_ROOT ."Home/LogIn"?> method="post">
         <div>
             <label for="email">Email</label>
             <input type="email" name="email" required>
@@ -20,7 +20,7 @@
             <input type="password" name="password" required>
         </div>
         <div>
-            <input type="submit" value="Ingresar">
+            <button type="submit">LogIn</button>
         </div>
         </form>
     </div>

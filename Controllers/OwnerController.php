@@ -10,6 +10,7 @@ class OwnerController
     public function HomeOwner()
     {    
         $owner_DAO = new OwnerDAO();
+       
 
         $owner = $owner_DAO->GetById($_SESSION['id']);
 
@@ -17,7 +18,7 @@ class OwnerController
     }
     public function Register($name, $lastName, $email, $password, $dni, $birthDay)
     {
-        $alert=new Alert
+       
         try {
         $owner = new Owner();
         $owner->setName($name);
@@ -29,9 +30,11 @@ class OwnerController
 
         $ownerDAO = new OwnerDAO();
         $ownerDAO->Add($owner);
-        } catch (Exception $th) {
+        }catch (Exception $th) {
             throw $th;
         }
+        require_once(VIEWS_PATH . "LogIn.php");
+       
         
     }
     

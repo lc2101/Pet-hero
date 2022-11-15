@@ -13,19 +13,19 @@
      public function Add(Watcher $watcher)
      {
         try {
-         $query= "INSERT INTO watchers (idwatchers, name, lastName, birthDay, email, dni, reputation, password, petType, expectedPay, sizecare) VALUES (:idwatchers, :name, :lastName, :birthDay, :email, :dni, :reputation, :password, :petType, :expectedPay, :sizecare);"
+         $query= "INSERT INTO watchers (idwatchers, name, lastName, birthDay, email, dni, reputation, password, petType, expectedPay, sizecare) VALUES (:idwatchers, :name, :lastName, :birthDay, :email, :dni, :reputation, :password, :petType, :expectedPay, :sizecare)";
                          
-             $parameters['idwatchers'] = $watcher->getId();
-             $parameters['name'] = $watcher->getName();
-             $parameters['lastName'] = $watcher->getLastName();
-             $parameters['birthDay'] = $watcher->getBirthDay();
-             $parameters['email'] = $watcher->getEmail();
-             $parameters['dni'] = $watcher->getDni();         
-             $parameters['reputation'] = $watcher->getReputation();
-             $parameters['password'] = $watcher->getPassword();
-             $parameters['petType'] = $watcher->getPetType();
-             $parameters['expectedPay'] = $watcher->getExpectedPay();
-             $parameters['sizecare'] = $watcher->getSizecare();
+             $parameters["idwatchers"] = $watcher->getId();
+             $parameters["name"] = $watcher->getName();
+             $parameters["lastName"] = $watcher->getLastName();
+             $parameters["birthDay"] = $watcher->getBirthDay();
+             $parameters["email"] = $watcher->getEmail();
+             $parameters["dni"] = $watcher->getDni();         
+             $parameters["reputation"] = $watcher->getReputation();
+             $parameters["password"] = $watcher->getPassword();
+             $parameters["petType"] = $watcher->getPetType();
+             $parameters["expectedPay"] = $watcher->getExpectedPay();
+             $parameters["sizecare"] = $watcher->getSizecare();
          
              $this->connection = Connection::GetInstance();
              $this->connection->ExecuteNonQuery($query, $parameters);
@@ -62,17 +62,17 @@
      public function LoadData($resultSet)
      {
          $watcher = new Watcher();
-         $watcher->setId($resultSet['idwatchers']);
-         $watcher->setName($resultSet['name']);
-         $watcher->setLastName($resultSet['lastName'] );
-         $watcher->setBirthDay($resultSet['birthDay']);
-         $watcher->setEmail($resultSet['email']);
-         $watcher->setDni($resultSet['dni']);         
-         $watcher->setReputation($resultSet['reputation']);
-         $watcher->setPassword($resultSet['password']);
-         $watcher->setPetType($parameters['petType']);
-         $watcher->setExpectedPay($parameters['expectedPay']);
-         $watcher->getSizecare($parameters['sizecare']);
+         $watcher->setId($resultSet["idwatchers"]);
+         $watcher->setName($resultSet["name"]);
+         $watcher->setLastName($resultSet["lastName"] );
+         $watcher->setBirthDay($resultSet["birthDay"]);
+         $watcher->setEmail($resultSet["email"]);
+         $watcher->setDni($resultSet["dni"]);         
+         $watcher->setReputation($resultSet["reputation"]);
+         $watcher->setPassword($resultSet["password"]);
+         $watcher->setPetType($parameters["petType"]);
+         $watcher->setExpectedPay($parameters["expectedPay"]);
+         $watcher->getSizecare($parameters["sizecare"]);
          return $watcher;
      }
      public function GetById($id){

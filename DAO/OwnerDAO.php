@@ -7,27 +7,27 @@ use \Exception as Exception;
 class OwnerDao
 { 
        
-        
+    private $tableName="owners";  
     private $connection;
 
     public function Add(Owner $owner)
     {
        try {
-        $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :password);"
+        $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :password)";
                         
-            $parameters['idowners'] = 0;
-            $parameters['name'] = $owner->getName();
-            $parameters['lastName'] = $owner->getLastName();
-            $parameters['birthDay'] = $owner->getBirthDay();
-            $parameters['email'] = $owner->getEmail();
-            $parameters['dni'] = $owner->getDni();         
-            $parameters['password'] = $owner->getPassword();
+            $parameters["idowners"] = 0;
+            $parameters["name"] = $owner->getName();
+            $parameters["lastName"] = $owner->getLastName();
+            $parameters["birthDay"] = $owner->getBirthDay();
+            $parameters["email"] = $owner->getEmail();
+            $parameters["dni"] = $owner->getDni();         
+            $parameters["password"] = $owner->getPassword();
         
             $this->connection = Connection::GetInstance();
             $this->connection->ExecuteNonQuery($query, $parameters);
-       }catch (Exception $e)
+       }catch (Exception $ex)
        {
-           throw $e;
+           throw $ex;
        }              
             
     }
@@ -48,9 +48,9 @@ class OwnerDao
             }
             return $ownersList;    
         }
-        catch (Exception $e)
+        catch (Exception $ex)
         {
-            throw $e;
+            throw $ex;
         }
 
         
@@ -58,14 +58,13 @@ class OwnerDao
     public function LoadData($resultSet)
     {
         $owner = new Owner();
-        $owner->setId($resultSet['idowners']);
-        $owner->setName($resultSet['name']);
-        $owner->setLastName($resultSet['lastName'] );
-        $owner->setBirthDay($resultSet['birthDay']);
-        $owner->setEmail($resultSet['email']);
-        $owner->setDni($resultSet['dni']);         
-        $owner->setReputation($resultSet['reputation']);
-        $owner->setPassword($resultSet['password']);
+        $owner->setId($resultSet["idowners"]);
+        $owner->setName($resultSet["name"]);
+        $owner->setLastName($resultSet["lastName"] );
+        $owner->setBirthDay($resultSet["birthDay"]);
+        $owner->setEmail($resultSet["email"]);
+        $owner->setDni($resultSet["dni"]);
+        $owner->setPassword($resultSet["password"]);
         return $owner;
     }
     public function GetById($id){
@@ -90,9 +89,10 @@ class OwnerDao
             return $ownersList[0];  
             }  
         }
-        catch (Exception $e)
+        catch (Exception $ex)
         {
-            throw $e;
+            
+            throw $ex;
         }
     }
     public function GetByEmail($email)
@@ -102,24 +102,30 @@ class OwnerDao
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM owners WHERE email = :email ";
+                
+                $query = "SELECT * FROM owners WHERE email = '$email'";
+                
                 $resultSet = $this->connection->Execute($query);
+                
                 if(empty($resultSet))
                 {
-                 return null;
+                    
+                    return null;
                 }else{
+                    
                     foreach($resultSet as $row) 
                 {
                     $owner = $this->LoadData($row);
+                    
                     array_push($ownersList, $owner);
                 }
 
                 return $ownersList[0];  
                 } 
             }
-            catch (Exception $e) 
+            catch (Exception $ex) 
             {
-                throw $e;
+                throw $ex;
             }
 
            

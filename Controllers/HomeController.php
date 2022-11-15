@@ -31,28 +31,34 @@
          require_once(VIEWS_PATH."owner-signin.php");
         }
         public function LogIn ($email , $password){
+            
             try {
+                
                 $ownerdao= new OwnerDAO();
-                $owner=$ownerdao->GetByEmail($email);
+                $ownerI=$ownerdao->GetByEmail($email);
                 $watcherdao= new WatcherDAO();
-                $watcher=$watcherdao->GetByEmail($email);
-                if(($owner==NULL || $owner->getPassword()!=$password) && ($watcher==NULL || $watcher->getPassword()!=$password))
+                $watcherI=$watcherdao->GetByEmail($email);
+                
+                if(($ownerI==NULL || $owner->getPassword()!=$password) && ($watcherI==NULL || $watcher->getPassword()!=$password))
                 {
+                
                 header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
                 }else{
-                    if($owner->getPassword()==$password)
+                   
+                   if($ownerI->getPassword()==$password)
                     {
                         session_start();
-                        $_SESSION['id']=$owner->getId();
+                        $_SESSION['id']=$ownerI->getId();
                         header("location: " . FRONT_ROOT . "Owner/HomeOwner");
-                    }elseif($watcher->getPassword()==$password)
+                    }elseif($watcherI->getPassword()==$password)
                     {
                         session_start();
-                        $_SESSION['id']=$watcher->getId();
+                        $_SESSION['id']=$watcherI->getId();
                         header("location: " . FRONT_ROOT . "");
                     }
                 }
             }   catch(Exception $e){
+                
                 throw $e;
                 header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
             }

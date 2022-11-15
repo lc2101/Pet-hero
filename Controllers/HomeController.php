@@ -44,7 +44,7 @@
                     {
                         session_start();
                         $_SESSION['id']=$owner->getId();
-                        header("location: " . FRONT_ROOT . "");
+                        header("location: " . FRONT_ROOT . "Owner/HomeOwner");
                     }elseif($watcher->getPassword()==$password)
                     {
                         session_start();
@@ -67,6 +67,6 @@
 
         }
             
-    }
+    
     
 ?>

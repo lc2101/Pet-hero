@@ -92,6 +92,29 @@
     
             return $pet;
         }
+        public function GetByOwnerId($id){
+           
+            $petList = array();
+
+            try 
+            {
+                $this->connection = Connection::GetInstance();
+                $query = "SELECT * FROM pets WHERE idowners = '$id' ";
+                $resultSet = $this->connection->Execute($query);
+                foreach ($resultSet as $row) 
+                {
+                    $pet = $this->LoadData($row);
+                    array_push($petList, $pet);
+                }
+
+                return $petList;
+            } 
+            catch (Exception $e) 
+            {
+                throw $e;
+            }
+            
+        }
     
     
     

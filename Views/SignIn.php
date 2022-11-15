@@ -11,7 +11,7 @@
 <body>
     <div class="signin-container">
         <h1>Registrase como:</h1>
-        <a href=<?php echo FRONT_ROOT ."Home/SignInOwner"?>>Dueño</a> <br> <a href=<?php echo FRONT_ROOT ."Home/SignInWatcher"?>>Guardian</a>
+        <a href=<?php echo FRONT_ROOT ."Home/SignInOwner"?>>Dueñow</a> <br> <a href=<?php echo FRONT_ROOT ."Home/SignInWatcher"?>>Guardian</a>
     </div>
 </body>
 </html>

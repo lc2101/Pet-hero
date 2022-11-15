@@ -28,5 +28,9 @@
             </div>
         </header>
     </div>
+    <div>
+    <p><?php echo $owner->getName()?></p>
+    <p><?php echo $owner->getLastName()?></p>
+    </div>
 </body>
 </html>

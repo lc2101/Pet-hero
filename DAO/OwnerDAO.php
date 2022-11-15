@@ -13,15 +13,14 @@ class OwnerDao
     public function Add(Owner $owner)
     {
        try {
-        $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, reputation, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :reputation, :password);"
+        $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :password);"
                         
-            $parameters['idowners'] = $owner->getId();
+            $parameters['idowners'] = 0;
             $parameters['name'] = $owner->getName();
             $parameters['lastName'] = $owner->getLastName();
             $parameters['birthDay'] = $owner->getBirthDay();
             $parameters['email'] = $owner->getEmail();
             $parameters['dni'] = $owner->getDni();         
-            $parameters['reputation'] = $owner->getReputation();
             $parameters['password'] = $owner->getPassword();
         
             $this->connection = Connection::GetInstance();

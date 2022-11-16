@@ -1,23 +1,24 @@
 <?php
 namespace Controllers;
 
-use Models\Owner as Owner;
-use DAO\OwnerDAO as OwnerDAO;
+use Models\Watcher as Watcher;
+use DAO\WatcherDAO as WatcherDAO;
 use Exception;
 
-class OwnerController 
+class WatcherController 
 {
-    public function HomeOwner()
+    public function HomeWatcher()
     {    
         
         if (isset($_SESSION['id']))
         {
-            $ownerDAO = new OwnerDAO();
+            
+            $watcherDAO = new WatcherDAO();
             
             try {
-            $owner=$ownerDAO->getById($_SESSION['id']);
-            
-            require_once(VIEWS_PATH."homeOwner.php");
+                echo "boca"; 
+                $watcher=$watcherDAO->getById($_SESSION['id']);
+            require_once(VIEWS_PATH."homeWatcher.php");
             
             } catch (Exception $ex) {
                 
@@ -35,11 +36,9 @@ class OwnerController
     {
        
         try {
-        $owner = new Owner($name, $lastName, $birthDay, $email, $dni, $password);
-       
-
-        $ownerDAO = new OwnerDAO();
-        $ownerDAO->Add($owner);
+        $watcher = new Watcher($name, $lastName, $birthDay, $email, $dni, $password);        
+        $watcherDAO = new WatcherDAO();
+        $watcherDAO->Add($watcher);
         }catch (Exception $th) {
             throw $th;
         }
@@ -58,12 +57,3 @@ class OwnerController
 
 
 }
-
-
-
-
-
-
-
-
-?>

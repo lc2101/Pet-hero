@@ -8,12 +8,7 @@ abstract class User{
     private $dni;
     private $password;
  
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
+   
 
     public function getEmail()
     {

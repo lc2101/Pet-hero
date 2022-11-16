@@ -47,7 +47,7 @@
                  
              foreach ($resultSet as $row) 
              {
-                 $watcher= $this->LoadData($row);
+                 $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
                  array_push($watchersList, $watcher);
              }
              return $watchersList;    
@@ -59,22 +59,7 @@
  
          
      }
-     public function LoadData($resultSet)
-     {
-         $watcher = new Watcher();
-         $watcher->setId($resultSet["idwatchers"]);
-         $watcher->setName($resultSet["name"]);
-         $watcher->setLastName($resultSet["lastName"]);
-         $watcher->setBirthDay($resultSet["birthDay"]);
-         $watcher->setEmail($resultSet["email"]);
-         $watcher->setDni($resultSet["dni"]);         
-         $watcher->setReputation($resultSet["reputation"]);
-         $watcher->setPassword($resultSet["password"]);
-         $watcher->setPetType($parameters["petType"]);
-         $watcher->setExpectedPay($parameters["expectedPay"]);
-         $watcher->getSizecare($parameters["sizecare"]);
-         return $watcher;
-     }
+    
      public function GetById($id){
 
         $watchersList = array();
@@ -83,7 +68,8 @@
         {
             $this->connection = Connection::GetInstance();
             $query = "SELECT * FROM watchers WHERE idwatchers = :id";
-            $resultSet = $this->connection->Execute($query);
+            $parameters["id"] = $id;
+            $resultSet = $this->connection->Execute($query, $parameters);
                 
             if(empty($resultSet))
             {
@@ -91,7 +77,7 @@
             }else{
                 foreach ($resultSet as $row) 
             {
-                $watcher= $this->LoadData($row);
+                $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
                 array_push($ownersList, $watcher);
             }
             return $watchersList[0];  
@@ -120,7 +106,7 @@
                 }else{
                     foreach($resultSet as $row) 
                 {
-                    $watcher = $this->LoadData($row);
+                    $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
                     array_push($watchersList, $watcher);
                 }
 

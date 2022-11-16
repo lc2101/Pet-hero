@@ -27,29 +27,28 @@
                 $watcherdao= new WatcherDAO();
                 $watcherI=$watcherdao->GetByEmail($email);
                 
-                if(($ownerI==NULL) && ($watcherI==NULL))
+                if(($ownerI!=NULL) && ($ownerI->getPassword() === $password))
                 {
+                    session_start();
+                    $_SESSION['id']=$ownerI->getId();
+                    header("location: " . FRONT_ROOT . "Owner/HomeOwner");
                     
-                    header("location: " . FRONT_ROOT . "View/ShowLogin");
                     
-                }else{
+                }elseif(($watcherI!=NULL) && ($watcherI->getPassword() === $password))
+                {
+                 
+                               
+                    session_start();
+                    $_SESSION["id"]=$watcherI->getId();
                     
-                   if($ownerI->getPassword() === $password)
-                    {
-                        
-                        session_start();
-                        $_SESSION['id']=$ownerI->getId();
-                        header("location: " . FRONT_ROOT . "Owner/HomeOwner");
-                    }elseif($watcherI->getPassword()===$password)
-                    {
-                        session_start();
-                        $_SESSION["id"]=$watcherI->getId();
-                        header("location: " . FRONT_ROOT . "");
-                    }
+                    header("location: " . FRONT_ROOT . "Watcher/HomeWatcher");
+                      
+                    
                 }
-            }   catch(Exception $e){
+            }catch(Exception $e){
                 
                 throw $e;
+                header("location: " . FRONT_ROOT . "View/ShowLogin");
                 
                 //header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
             }

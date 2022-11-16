@@ -15,7 +15,7 @@ class OwnerDao
        try {
         $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :password)";
                         
-            $parameters["idowners"] = 0;
+            $parameters["idowners"] = $owner->getId();;
             $parameters["name"] = $owner->getName();
             $parameters["lastName"] = $owner->getLastName();
             $parameters["birthDay"] = $owner->getBirthDay();
@@ -44,7 +44,7 @@ class OwnerDao
                 
             foreach ($resultSet as $row) 
             {
-                $owner= $this->LoadData($row);
+                $owner = new Owner($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idowners"]);
                 array_push($ownersList, $owner);
             }
             return $ownersList;    
@@ -55,18 +55,6 @@ class OwnerDao
         }
 
         
-    }
-    public function LoadData($resultSet)
-    {
-        $owner = new Owner();
-        $owner->setId($resultSet["idowners"]);
-        $owner->setName($resultSet["name"]);
-        $owner->setLastName($resultSet["lastName"] );
-        $owner->setBirthDay($resultSet["birthDay"]);
-        $owner->setEmail($resultSet["email"]);
-        $owner->setDni($resultSet["dni"]);
-        $owner->setPassword($resultSet["password"]);
-        return $owner;
     }
     public function GetById($id){
 
@@ -87,7 +75,7 @@ class OwnerDao
             }else{
                 foreach ($resultSet as $row) 
             {
-                $owner= $this->LoadData($row);
+                $owner = new Owner($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idowners"]);
                 array_push($ownersList, $owner);
                 
             }
@@ -119,13 +107,12 @@ class OwnerDao
                 }else{
                     
                     foreach($resultSet as $row) 
-                {
-                    $owner = $this->LoadData($row);
-                    
+                    {
+                    $owner = new Owner($row["name"], $row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idowners"]);
                     array_push($ownersList, $owner);
-                }
+                    }
 
-                return $ownersList[0];  
+                    return $ownersList[0];  
                 } 
             }
             catch (Exception $ex) 

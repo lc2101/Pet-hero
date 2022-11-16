@@ -12,46 +12,35 @@
 </head>
 <body>
     <div>
-        <form action="../Controllers/watcher-signin-action.php" method="post"><h1>Usted se esta registrando como guardian:</h1>
-        <div>
+    <form action="<?php echo FRONT_ROOT . "Watcher/Register" ?>"  method="post">
+            <div>
                 <label for="name">Nombre</label>
-                <input type="text" name="name" placeholder="..." id="name" required>
+                <input type="text" name="name" placeholder="..."required>
             </div>
             <div>
                 <label for="lastName">Apellido</label>
-                <input type="text" name="lastName" placeholder="..." id="lastName" required>
+                <input type="text" name="lastName" placeholder="..." required>
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="ejemplo@gmail.com" id="email" required>
+                <input type="email" name="email" placeholder="ejemplo@gmail.com"required>
             </div>
             <div>
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password"required>
             </div>
             <div>
-                <label for="conf_password">Confirmar Contraseña</label>
-                <input type="password" name="conf_password" id="conf_password" required>
+                <label for="dni">DNI</label>
+                <input type="text" name="dni" required>
             </div>
             <div>
-                <label for="birthday">Fecha de Nacimiento</label>
-                <input type="date" name="birthday" id="birthday" value="<?php echo date("Y-m-d")?>"  min="1903-01-01" max="<?php echo date("Y-m-d")?>" required>
+                <label for="birthDay">Fecha de Nacimiento</label>
+                <input type="date" name="birthDay" min="1903-01-01" max="<?php echo date("Y-m-d")?>" required>
             </div>
             <div>
-                <label for="petType">Tipo de mascota a cuidar: </label>
-                <select name="petType" id="petType">
-                    <option value="cat">gato</option>
-                    <option value="dog">perro</option>
-                </select>
+                <input type="submit" value="signin">
             </div>
-            <div>
-                <label for="expectedPay">Precio por su servicio: </label>
-                <input type="number" placeholder="$ars" name="expectedPay">
-            </div>
-            <div>
-                 <input type="submit" value="Enviar">
-            </div>
-        </form>
+        </form> 
     </div>
 </body>
 </html>

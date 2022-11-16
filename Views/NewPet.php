@@ -1,12 +1,3 @@
-<?php
-    session_start();
-    if(isset($_SESSION["loggedUser"]))
-    {
-        $loggedUser= $_SESSION["loggedUser"];
-    }else{
-        header("location:login.php");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +9,7 @@
 </head>
 <body>
     <div>
-        <form action="../Controllers/pet-add-action.php" method="post">
+        <form action="<?php echo FRONT_ROOT . "Pet/Register" ?>" method="post">
         <div>
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name">
@@ -34,6 +25,15 @@
             <label for="age">Edad</label>
             <input type="number" name="age" id="age">
         </div>
+        <div>
+            <label for="size">Tamaño</label>
+            <select name="size" id="size">
+                <option value="pequeño">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
+            </select>           
+        </div>
+
         <div>
             <button type="submit">Enviar</button>
             <button type="reset">Resetear</button>

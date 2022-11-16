@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($petlist as $mascota) { 
+                    foreach ($petList as $mascota) { 
                          ?>
                          <tr>
                             <td><?php echo $mascota->getName()?></td>
@@ -53,7 +53,7 @@
     
     
 
-    <a href="newPet.php">Nueva Mascota</a>
+    <a href=<?php echo FRONT_ROOT ."View/NewPet"?>>Nueva Mascota</a>
     <a href=<?php echo FRONT_ROOT ."View/ShowHomeOwner"?>>Atrás</a>
     
 </body>

@@ -25,7 +25,11 @@ class ViewController
         }
         public function ShowOwnerPetList()
         {
-         require_once(VIEWS_PATH."homeOwner.php");
+         require_once(VIEWS_PATH."ownerPetList.php");
+        }
+        public function NewPet()
+        {
+         require_once(VIEWS_PATH."NewPet.php");
         }
 
 

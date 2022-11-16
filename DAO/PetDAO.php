@@ -14,18 +14,20 @@
         {
             try
             {
-                $query = "INSERT INTO pets (idpets, name, idowners, age, specie, size) VALUES (:id_pets, :name, :idowners, :age, :specie, :size)";
+                $query = "INSERT INTO pets (idpets, name, idowners, age, specie, size) VALUES (:idpets, :name, :idowners, :age, :specie, :size)";
 
-                $parameters['idpets'] = $pet->getId();
-                $parameters['name'] = $pet->getName();
-                $parameters['idowners'] = $pet->getOwner_id();
-                $parameters['age'] = $pet->getAge();
-                $parameters['specie'] = $pet->getSpecie();
-                $parameters['size'] = $pet->getSize();
+                $parameters["idpets"] = 0;
+                $parameters["name"] = $pet->getName();
+                $parameters["idowners"] = $pet->getOwner_id();
+                $parameters["age"] = $pet->getAge();
+                $parameters["specie"] = $pet->getSpecie();
+                $parameters["size"] = $pet->getSize();
                 
                 
                 $this->connection = Connection::GetInstance();
+
                 $this->connection->ExecuteNonQuery($query, $parameters);
+                
             }
             catch (Exception $e)
             {
@@ -65,6 +67,7 @@
             {
                 $this->connection = Connection::GetInstance();
                 $query = "SELECT * FROM pets WHERE idpets = :id";
+                
                 $parameters["id"] = $id;
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) 
@@ -100,15 +103,25 @@
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM pets WHERE idowners = :id ";
-                $parameters["idowners"] = $id;
+                $query = "SELECT * FROM pets WHERE idowners =:id";
+                $parameters["id"] = $id;
+                echo $id;
                 $resultSet = $this->connection->Execute($query, $parameters);
-                foreach ($resultSet as $row) 
+                
+                if(empty($resultSet))
                 {
+                    
+                return null;
+                }else{
+                foreach($resultSet as $row) 
+                {
+                    
                     $pet = $this->LoadData($row);
+                    
                     array_push($petList, $pet);
                 }
-
+                }
+                
                 return $petList;
             } 
             catch (Exception $e) 

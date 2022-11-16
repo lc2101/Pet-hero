@@ -14,7 +14,7 @@
             <div class="nav-box">
                 <nav>
                     <a href=<?php echo FRONT_ROOT ."View/WatcherList"?>>Listado de Guardianes</a>
-                    <a href=<?php echo FRONT_ROOT ."View/OwnerPetList"?>>Lista Mascotas</a>
+                    <a href=<?php echo FRONT_ROOT ."Pet/OwnerPetList"?>>Lista Mascotas</a>
                     
                 </nav>
             </div>

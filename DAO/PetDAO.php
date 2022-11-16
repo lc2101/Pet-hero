@@ -105,7 +105,7 @@
                 $this->connection = Connection::GetInstance();
                 $query = "SELECT * FROM pets WHERE idowners =:id";
                 $parameters["id"] = $id;
-                echo $id;
+                
                 $resultSet = $this->connection->Execute($query, $parameters);
                 
                 if(empty($resultSet))

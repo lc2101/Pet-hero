@@ -61,6 +61,14 @@
 
 
             }
+        public function LogOut()
+        {
+        session_start();
+        if ($_SESSION['id']) {
+            session_destroy();
+            return header("location: " . FRONT_ROOT . "View/ShowLogin");
+        }
+        }
 
         }
             

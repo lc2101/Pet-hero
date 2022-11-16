@@ -54,7 +54,10 @@
     
 
     <a href=<?php echo FRONT_ROOT ."View/NewPet"?>>Nueva Mascota</a>
-    <a href=<?php echo FRONT_ROOT ."View/ShowHomeOwner"?>>Atrás</a>
+    <a href=<?php echo FRONT_ROOT ."Owner/HomeOwner"?>>Atrás</a>
+    <form action="<?php echo FRONT_ROOT . "Home/LogOut" ?>" method="post">
+                    <button type="submit">LogOut</button>
+    </form>
     
 </body>
 </html>

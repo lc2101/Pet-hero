@@ -34,8 +34,8 @@ class PetController
             
         $pet = new Pet();
         $pet->setName($name);
-        $pet->setOwner_id(isset($_SESSION['id']));
-        
+        $pet->setOwner_id(($_SESSION['id']));
+               
         $pet->setAge($age);
         $pet->setSpecie($specie);
         $pet->setSize($size);          

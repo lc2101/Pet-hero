@@ -74,17 +74,21 @@ class OwnerDao
         try
         {
             $this->connection = Connection::GetInstance();
-            $query = "SELECT * FROM owners WHERE idowners ='$id'";
-            $resultSet = $this->connection->Execute($query);
+            $query = "SELECT * FROM owners WHERE idowners =:id";
+            
+            $parameters["id"] = $id;
+            $resultSet = $this->connection->Execute($query, $parameters);
                 
             if(empty($resultSet))
             {
+                
                 return null;
             }else{
                 foreach ($resultSet as $row) 
             {
                 $owner= $this->LoadData($row);
                 array_push($ownersList, $owner);
+                
             }
             return $ownersList[0];  
             }  
@@ -103,9 +107,9 @@ class OwnerDao
             {
                 $this->connection = Connection::GetInstance();
                 
-                $query = "SELECT * FROM owners WHERE email = '$email'";
-                
-                $resultSet = $this->connection->Execute($query);
+                $query = "SELECT * FROM owners WHERE email = :email";
+                $parameters["email"] = $email;
+                $resultSet = $this->connection->Execute($query, $parameters);
                 
                 if(empty($resultSet))
                 {

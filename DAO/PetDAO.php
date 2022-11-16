@@ -64,8 +64,9 @@
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM pets WHERE idpets = '$id' ";
-                $resultSet = $this->connection->Execute($query);
+                $query = "SELECT * FROM pets WHERE idpets = :id";
+                $parameters["id"] = $id;
+                $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) 
                 {
                     $pet = $this->LoadData($row);
@@ -99,8 +100,9 @@
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM pets WHERE idowners = '$id' ";
-                $resultSet = $this->connection->Execute($query);
+                $query = "SELECT * FROM pets WHERE idowners = :id ";
+                $parameters["idowners"] = $id;
+                $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) 
                 {
                     $pet = $this->LoadData($row);

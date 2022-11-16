@@ -1,28 +1,3 @@
-<?php
-require_once("../Config/Autoload.php");
-use Models\Pet as Pet;
-use Models\Owner as Owner;
-use Repository\OwnerRepository as OwnerRepository;
-session_start();
-    if(isset($_SESSION["loggedUser"]))
-    {
-        $loggedUser= $_SESSION["loggedUser"];
-    }else{
-        header("location:login.php");
-    }
-$ownerRepo= new OwnerRepository();
-$petlist=array();   
-foreach($ownerRepo->getAll() as $owner)
-{
-    if($owner->getEmail() == $loggedUser->getEmail())
-    {
-        foreach ($owner->getPetList() as $pet) {
-           array_push($petlist,$pet);
-        }
-        
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +54,7 @@ foreach($ownerRepo->getAll() as $owner)
     
 
     <a href="newPet.php">Nueva Mascota</a>
-    <a href="mainOwner.php">Atrás</a>
+    <a href=<?php echo FRONT_ROOT ."View/ShowHomeOwner"?>>Atrás</a>
     
 </body>
 </html>

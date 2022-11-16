@@ -11,27 +11,13 @@
     {
         public function Index($message = "")
         {
-            require_once(VIEWS_PATH."entry.php");
+            require_once(VIEWS_PATH."LogIn.php");
         }   
-        public function ShowAccountType()
-        {
-        require_once(VIEWS_PATH . "SignIn.php");
-        }
-        public function ShowLogIn()
-        {
-        require_once(VIEWS_PATH . "LogIn.php");
-        }
-        public function SignInWatcher()
-        {
-        require_once (VIEWS_PATH."watcher-signin.php");
-        }
-
-        public function SignInOwner()
-        {
-         require_once(VIEWS_PATH."owner-signin.php");
-        }
+        
+        
         public function LogIn ($email , $password){
             
+            session_destroy();
             try {
                 
                 $ownerdao= new OwnerDAO();
@@ -44,7 +30,7 @@
                 if(($ownerI==NULL) && ($watcherI==NULL))
                 {
                     
-                    header("location: " . FRONT_ROOT . "Home/ShowLogin");
+                    header("location: " . FRONT_ROOT . "View/ShowLogin");
                     
                 }else{
                     
@@ -57,7 +43,7 @@
                     }elseif($watcherI->getPassword()===$password)
                     {
                         session_start();
-                        $_SESSION['id']=$watcherI->getId();
+                        $_SESSION["id"]=$watcherI->getId();
                         header("location: " . FRONT_ROOT . "");
                     }
                 }

@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="signin-container">
-        <a href=<?php echo FRONT_ROOT ."Home/ShowLogIn"?>>LogIn</a> <a href=<?php echo FRONT_ROOT ."Home/ShowAccountType"?>>Sing In</a>
+        <a href=<?php echo FRONT_ROOT ."View/ShowLogIn"?>>LogIn</a> <a href=<?php echo FRONT_ROOT ."Home/ShowAccountType"?>>Sing In</a>
     </div>
 </body>
 </html>

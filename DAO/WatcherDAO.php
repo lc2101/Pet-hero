@@ -82,7 +82,7 @@
         try
         {
             $this->connection = Connection::GetInstance();
-            $query = "SELECT * FROM watchers WHERE idwatchers ='$id'";
+            $query = "SELECT * FROM watchers WHERE idwatchers = :id";
             $resultSet = $this->connection->Execute($query);
                 
             if(empty($resultSet))
@@ -110,8 +110,9 @@
             try 
             {
                 $this->connection = Connection::GetInstance();
-                $query = "SELECT * FROM watchers WHERE email = '$email'";
-                $resultSet = $this->connection->Execute($query);
+                $query = "SELECT * FROM watchers WHERE email = :email";
+                $parameters["email"] = $email;
+                $resultSet = $this->connection->Execute($query, $parameters);
                 if(empty($resultSet))
                 {
                   

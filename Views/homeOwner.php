@@ -13,9 +13,9 @@
         <header>
             <div class="nav-box">
                 <nav>
-                    <a href="watcher-list.php">Listado de Guardianes</a>
-                    <a href="pet-list.php">Lista Mascotas</a>
-                    <a href="#">ejemplo</a>
+                    <a href=<?php echo FRONT_ROOT ."View/WatcherList"?>>Listado de Guardianes</a>
+                    <a href=<?php echo FRONT_ROOT ."View/OwnerPetList"?>>Lista Mascotas</a>
+                    
                 </nav>
             </div>
         </header>

@@ -9,12 +9,27 @@ class OwnerController
 {
     public function HomeOwner()
     {    
-        $owner_DAO = new OwnerDAO();
-       
+        
+        if (isset($_SESSION['id']))
+        {
+            $ownerDAO = new OwnerDAO();
+            
+            try {
+            $owner=$ownerDAO->getById($_SESSION['id']);
+            
+            require_once(VIEWS_PATH."homeOwner.php");
+            
+            } catch (Exception $ex) {
+                
+                throw $ex;
+            }
+            
+        }else
+            {
+            header("location: " . FRONT_ROOT . "View/ShowLogin");
+            }     
 
-        $owner = $owner_DAO->GetById($_SESSION['id']);
-
-        require_once (VIEWS_PATH . "mainOwner.php");          
+              
     }
     public function Register($name, $lastName, $email, $password, $dni, $birthDay)
     {

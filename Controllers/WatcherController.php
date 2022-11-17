@@ -2,8 +2,8 @@
 namespace Controllers;
 
 use Models\Watcher as Watcher;
-use DAO\WatcherDAO as WatcherDAO;
-use Exception;
+use JDAO\WatcherDAO as WatcherDAO;
+use \Exception as Exception;
 
 class WatcherController 
 {
@@ -23,6 +23,31 @@ class WatcherController
             } catch (Exception $ex) {
                 
                 throw $ex;
+            }
+             
+        }else
+            {
+            header("location: " . FRONT_ROOT . "View/ShowLogin");
+            }     
+           
+              
+    }
+    public function EditWatcher()
+    {    
+        
+        
+        if (isset($_SESSION['id']))
+        {
+            
+           $watcherDAO = new WatcherDAO();
+                       
+            try {
+                $watcher=$watcherDAO->getById($_SESSION['id']);
+                require_once(VIEWS_PATH."edit-watcher.php");
+            
+            } catch (Exception $ex) {
+                
+                echo $ex->getMessage();
             }
              
         }else
@@ -56,7 +81,7 @@ class WatcherController
             
             $watcherList=$watcherDAO->GetAll();
             
-            require_once(VIEWS_PATH."edit-watcher.php");
+            require_once(VIEWS_PATH."watcher-list.php");
             }catch(Exception $ex){
              
             throw $ex;
@@ -81,7 +106,7 @@ class WatcherController
             require_once(VIEWS_PATH."edit-watcher.php");
             }catch(Exception $ex){
                 
-                throw $ex;
+                echo $ex->getMessage();
              }   
             
 

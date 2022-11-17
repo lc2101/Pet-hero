@@ -3,6 +3,7 @@ namespace JDAO;
 
 use DAO\IWatcher as IWatcher;
 use Models\Watcher as Watcher;
+use \Exception as Exception;
 class WatcherDAO implements IWatcher
 {
     private $watcherList = array();
@@ -97,15 +98,15 @@ class WatcherDAO implements IWatcher
     }
     public function Edit(Watcher $watcherE)
     {
-        $this->RetrieveData();
+        //$this->RetrieveData();
         
                
         foreach($this->watcherList as $Watcher)
         {
             
-            if($Watcher->getId()=== $watcherE->getId())
-            {
-                
+           
+            if($Watcher->getId() === $watcherE->getId()){
+                echo"sadasdassda";
                 $Watcher=$watcherE;
             }else{
                 throw new Exception("Id No encontrado");

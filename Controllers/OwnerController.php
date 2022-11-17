@@ -2,8 +2,8 @@
 namespace Controllers;
 
 use Models\Owner as Owner;
-use DAO\OwnerDAO as OwnerDAO;
-use Exception;
+use JDAO\OwnerDAO as OwnerDAO;
+use \Exception as Exception;
 
 class OwnerController 
 {

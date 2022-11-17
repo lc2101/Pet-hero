@@ -3,6 +3,7 @@ namespace JDAO;
 
 use Models\Pet as Pet;
 use DAO\IPet as IPet;
+use \Exception as Exception;
 class PetDAO implements IPet
 {
     private $petList = array();

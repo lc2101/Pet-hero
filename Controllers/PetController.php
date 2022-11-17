@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use DAO\PetDAO as PetDAO;
+use JDAO\PetDAO as PetDAO;
 use Models\Pet as Pet;
 use \Exception as Exception;
 

@@ -15,7 +15,7 @@
     <form action="<?php echo FRONT_ROOT . "Watcher/Edit" ?>"  method="post">
             <div>
                 <label for="name">Nombre</label>
-                <input type="text" name="name" value=<?php echo $watcher->getName()?>required>
+                <input type="text" name="name" value=<?php echo $watcher->getName()?> required>
             </div>
             <div>
                 <label for="lastName">Apellido</label>
@@ -23,19 +23,19 @@
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" value=<?php echo $watcher->getEmail()?>required>
+                <input type="email" name="email" value=<?php echo $watcher->getEmail()?> required>
             </div>
             <div>
                 <label for="password">Contraseña</label>
-                <input type="password" name="password"value=<?php echo $watcher->getPassword()?>required>
+                <input type="password" name="password" value=<?php echo $watcher->getPassword()?> required>
             </div>
             <div>
                 <label for="dni">DNI</label>
-                <input type="text" name="dni" value=<?php echo $watcher->getDNI()?>required >
+                <input type="text" name="dni" value=<?php echo $watcher->getDNI()?> required >
             </div>
             <div>
                 <label for="birthDay">Fecha de Nacimiento</label>
-                <input type="date" name="birthDay" min="1903-01-01" max="<?php echo date("Y-m-d")?>" value=<?php echo $watcher->getBirthDay()?>required>
+                <input type="date" name="birthDay" min="1903-01-01" max="<?php echo date("Y-m-d")?>" value=<?php echo $watcher->getBirthDay()?> required>
             </div>
              <div>
             <label for="petType">Especie</label>

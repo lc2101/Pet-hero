@@ -3,6 +3,7 @@ namespace JDAO;
 
 use DAO\IOwner as IOwner;
 use Models\Owner as Owner;
+use \Exception as Exception;
 class OwnerDAO implements IOwner
 {
     private $ownerList = array();

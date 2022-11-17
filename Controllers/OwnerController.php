@@ -21,7 +21,9 @@ class OwnerController
             
             } catch (Exception $ex) {
                 
-                throw $ex;
+                
+                header("location: " . FRONT_ROOT . "View/ShowLogin");
+                echo "No se encontro al usuario";
             }
             
         }else

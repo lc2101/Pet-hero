@@ -32,9 +32,12 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Tipo de Mascota a cuidar</th>
+                <th>Tamaño a Cuidar</th>
                 <th>Paga</th>
                 <th>Reputacion</th>
-                <th>Disponibilidad</th>
+                <th>Email</th>
+                
+                <th></th>
             </tr>
             <tbody>                  
                     
@@ -45,12 +48,10 @@
                             <td><?php echo $guardian->getName()?></td>
                             <td><?php echo $guardian->getLastName()?></td>
                             <td><?php echo $guardian->getPetType()?></td>
+                            <td><?php echo $guardian->getSizecare()?></td>
                             <td><?php echo $guardian->getExpectedPay()?></td>
-                            <td><?php if($guardian->getReputation()==NULL)
-                            {echo "no calificado";}else{
-                                echo $guardian->getReputation();
-                            }
-                            ?></td>
+                            <td><?php echo $guardian->getReputation()?></td>
+                            <td><?php echo $guardian->getEmail()?></td>
                            
                          </tr>
                          <?php

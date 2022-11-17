@@ -33,6 +33,8 @@
                         <th>Nombre</th>
                         <th>Especie</th>
                         <th>Edad</th>
+                        <th>Tamaño</th>
+                        <th>Id</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +45,8 @@
                             <td><?php echo $mascota->getName()?></td>
                             <td><?php echo $mascota->getSpecie()?></td>
                             <td><?php echo $mascota->getAge()?></td>
+                            <td><?php echo $mascota->getSize()?></td>
+                            <td><?php echo $mascota->getId()?></td>
                          </tr>
                          <?php
                         }

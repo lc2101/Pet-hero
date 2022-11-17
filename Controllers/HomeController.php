@@ -44,11 +44,15 @@
                     header("location: " . FRONT_ROOT . "Watcher/HomeWatcher");
                     
                     
+                }else{
+                    throw new Exception("Usuario o email incorrecto");
                 }
+                
             }catch(Exception $e){
                 
-                throw $e;
-                header("location: " . FRONT_ROOT . "View/ShowLogin");
+                
+                require_once(VIEWS_PATH . "LogIn.php");
+                echo($e->getMessage());
                 
                
             }

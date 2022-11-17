@@ -22,8 +22,8 @@
         </header>
     </div>
     <div>
-    <p><?php echo $watcher->getName()?></p>
-    <p><?php echo $watcher->getLastName()?></p>
+    <p>Hola</p>
+    <p><?php echo $watcher->getName()?><?php echo $watcher->getLastName()?></p>
     
 </body>
 </html>

@@ -3,8 +3,8 @@
     use Models\Pet as Pet;
     use DAO\Connection as Connection;
     use \Exception as Exception;
-
-    class PetDAO
+    use DAO\IPet as IPet;
+    class PetDAO implements IPet
     {
         
         private $connection;
@@ -16,7 +16,7 @@
             {
                 $query = "INSERT INTO pets (idpets, name, idowners, age, specie, size) VALUES (:idpets, :name, :idowners, :age, :specie, :size)";
 
-                $parameters["idpets"] = 0;
+                $parameters["idpets"] = $pet->getId();
                 $parameters["name"] = $pet->getName();
                 $parameters["idowners"] = $pet->getOwner_id();
                 $parameters["age"] = $pet->getAge();
@@ -72,7 +72,8 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 foreach ($resultSet as $row) 
                 {
-                    $pet = $this->LoadData($row);
+                    $pet = new Pet($row['name'],$row['idowners'],$row['age'],
+                    $row['specie'],$row['size'],$row['idpets']);
                     array_push($petList, $pet);
                 }
 
@@ -84,18 +85,7 @@
             }
             
         }
-        public function LoadData($resultSet)
-        {
-            $pet = new Pet();
-            $pet->setId($resultSet['idpets']);
-            $pet->setName($resultSet['name']);
-            $pet->setOwner_Id($resultSet['idowners']);
-            $pet->setAge($resultSet['age']);
-            $pet->setSpecie($resultSet['specie']);
-            $pet->setSize($resultSet['size']);           
-    
-            return $pet;
-        }
+        
         public function GetByOwnerId($id){
            
             $petList = array();
@@ -116,7 +106,8 @@
                 foreach($resultSet as $row) 
                 {
                     
-                    $pet = $this->LoadData($row);
+                    $pet = new Pet($row['name'],$row['idowners'],$row['age'],
+                    $row['specie'],$row['size'],$row['idpets']);
                     
                     array_push($petList, $pet);
                 }

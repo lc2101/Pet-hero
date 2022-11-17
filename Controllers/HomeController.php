@@ -29,6 +29,7 @@
                 
                 if(($ownerI!=NULL) && ($ownerI->getPassword() === $password))
                 {
+                    
                     session_start();
                     $_SESSION['id']=$ownerI->getId();
                     header("location: " . FRONT_ROOT . "Owner/HomeOwner");
@@ -36,13 +37,12 @@
                     
                 }elseif(($watcherI!=NULL) && ($watcherI->getPassword() === $password))
                 {
-                 
+                    
                                
                     session_start();
-                    $_SESSION["id"]=$watcherI->getId();
-                    
+                    $_SESSION["id"]=$watcherI->getId();                    
                     header("location: " . FRONT_ROOT . "Watcher/HomeWatcher");
-                      
+                    
                     
                 }
             }catch(Exception $e){
@@ -50,7 +50,7 @@
                 throw $e;
                 header("location: " . FRONT_ROOT . "View/ShowLogin");
                 
-                //header("location: " . FRONT_ROOT . "Home/ShowLogin"); 
+               
             }
             
 
@@ -62,14 +62,16 @@
             }
         public function LogOut()
         {
-        session_start();
-        if ($_SESSION['id']) {
             session_destroy();
+            // session_start();           
+            // if ($_SESSION['id']) {
+            // session_destroy();
+            
+            // }
             return header("location: " . FRONT_ROOT . "View/ShowLogin");
         }
-        }
 
-        }
+    }
             
     
     

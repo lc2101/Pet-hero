@@ -10,26 +10,26 @@ class WatcherController
     public function HomeWatcher()
     {    
         
+        
         if (isset($_SESSION['id']))
         {
             
-            $watcherDAO = new WatcherDAO();
-            
+           $watcherDAO = new WatcherDAO();
+                       
             try {
-                echo "boca"; 
                 $watcher=$watcherDAO->getById($_SESSION['id']);
-            require_once(VIEWS_PATH."homeWatcher.php");
+                require_once(VIEWS_PATH."homeWatcher.php");
             
             } catch (Exception $ex) {
                 
                 throw $ex;
             }
-            
+             
         }else
             {
             header("location: " . FRONT_ROOT . "View/ShowLogin");
             }     
-
+           
               
     }
     public function Register($name, $lastName, $email, $password, $dni, $birthDay)

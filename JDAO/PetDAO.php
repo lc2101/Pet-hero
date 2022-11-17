@@ -1,24 +1,21 @@
 <?php
-namespace Repository;
-require_once("..\Config\Autoload.php");
+namespace JDAO;
 
-use Models\Owner as Owner;
-class OwnerRepository
+use Models\Pet as Pet;
+use DAO\IPet as IPet;
+class PetDAO implements IPet
 {
-    private $ownerList = array();
-    private $fileName;
+    private $petList = array();
+    private $fileName= ROOT ."DATA/pets.json";
 
-    public function __construct()
-    {
-        $this->fileName= dirname(__DIR__)."/DATA/owners.json";
-    }
-    public function add(Owner $owner)
+    public function Add(Pet $pet)
     {
         $this->retrieveData();
+        
         array_push($this->ownerList, $owner);
         $this->saveData();
     }
-    public function getAll()
+    public function GetAll()
     {
         $this->retrieveData();
         return $this->ownerList;
@@ -29,14 +26,15 @@ class OwnerRepository
         $arrayToEncode= array();
         foreach($this->ownerList as $Owner)
         {
-           
+            $valuesArray["idowners"] = sizeof($arrayToEncode);
             $valuesArray["name"]= $Owner->getName();
             $valuesArray["lastName"]= $Owner->getLastName();
             $valuesArray["birthDay"]= $Owner->getBirthDay();
             $valuesArray["email"]= $Owner->getEmail();
             $valuesArray["password"]= $Owner->getPassword();
-            $valuesArray["petList"]= $Owner->getPetList();
-            $valuesArray["reputation"]= $Owner->getReputation();
+            $valuesArray["dni"] = $Owner->getDni(); 
+            
+                       
             array_push($arrayToEncode, $valuesArray);
         }
         $jsonContent= json_encode($arrayToEncode, JSON_PRETTY_PRINT);
@@ -52,17 +50,43 @@ class OwnerRepository
             $arrayToDecode= ($jsonContent) ? json_decode($jsonContent, true) : array();
 
             foreach ($arrayToDecode as $valuesArray) {
-                $Owner= new Owner();
-                $Owner->setReputation($valuesArray["reputation"]);
-                $Owner->setPetList($valuesArray["petList"]);
-                $Owner->setName($valuesArray["name"]);
-                $Owner->setLastName($valuesArray["lastName"]);
-                $Owner->setBirthDay($valuesArray["birthDay"]);
-                $Owner->setEmail( $valuesArray["email"]);
-                $Owner->setPassword($valuesArray["password"]);
+                $Owner= new Owner($valuesArray["name"],$valuesArray["lastName"],$valuesArray["birthDay"],$valuesArray["email"],$valuesArray["dni"],$valuesArray["password"],$valuesArray["idowners"]);
                 array_push($this->ownerList, $Owner);
             }
         }
+    }
+    public function GetById($id)
+     {
+        $this->RetrieveData();
+        $owner=NULL;
+
+        foreach($this->ownerList as $Owner)
+        {
+            if($Owner->getId()=== $id)
+            {
+                $owner=$Owner;
+            }
+        }
+        return $owner;
+        
+    }
+    public function GetByEmail($email)
+    {
+        $this->RetrieveData();
+        
+        $owner=NULL;
+        
+        foreach($this->ownerList as $Owner)
+        {
+            
+            if($Owner->getEmail()=== $email)
+            {
+                
+                $owner=$Owner;
+            }
+        }
+        return $owner;
+        
     }
 }
 

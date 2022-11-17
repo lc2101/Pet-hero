@@ -8,7 +8,17 @@ namespace Models;
     private $age;
     private $specie;
     private $size;
-
+    public function __construct($name, $owner_id, $age, $specie, $size, $id=0)
+    {
+            $this->name=$name;            
+            $this->owner_id=$owner_id;
+            $this->age=$age;
+            $this->specie=$specie;
+            $this->size=$size;
+            $this->id=$id;
+            
+            
+    }
     public function getName()
     {
         return $this->name;

@@ -78,7 +78,7 @@
                 foreach ($resultSet as $row) 
             {
                 $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
-                array_push($ownersList, $watcher);
+                array_push($watchersList, $watcher);
             }
             return $watchersList[0];  
             }  

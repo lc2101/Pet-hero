@@ -23,6 +23,7 @@ class Watcher extends User
             $this->reputation=$reputation;
             $this->sizecare=$sizecare;
             $this->id=$id;
+            
         }
     public function getPassword()
     {

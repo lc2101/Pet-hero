@@ -29,16 +29,11 @@ class PetController
     }
     public function Register($name, $age, $specie, $size)
     {
-       
+        
         try {
             
-        $pet = new Pet();
-        $pet->setName($name);
-        $pet->setOwner_id(($_SESSION['id']));
+        $pet = new Pet($name,($_SESSION['id']), $age, $specie, $size);
                
-        $pet->setAge($age);
-        $pet->setSpecie($specie);
-        $pet->setSize($size);          
         
 
         $petDAO = new PetDAO();

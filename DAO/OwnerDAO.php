@@ -3,8 +3,9 @@ namespace DAO;
 use Models\Owner as Owner;
 use DAO\Connection as Connection;
 use \Exception as Exception;
+use DAO\IOwner as IOwner;
 
-class OwnerDao
+class OwnerDAO implements IOwner
 { 
        
     private $tableName="owners";  
@@ -15,7 +16,7 @@ class OwnerDao
        try {
         $query= "INSERT INTO owners (idowners, name, lastName, birthDay, email, dni, password) VALUES (:idowners, :name, :lastName, :birthDay, :email, :dni, :password)";
                         
-            $parameters["idowners"] = $owner->getId();;
+            $parameters["idowners"] = $owner->getId();
             $parameters["name"] = $owner->getName();
             $parameters["lastName"] = $owner->getLastName();
             $parameters["birthDay"] = $owner->getBirthDay();
@@ -122,6 +123,8 @@ class OwnerDao
 
            
         }
+       
+    
 }
 
 

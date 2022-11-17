@@ -37,7 +37,7 @@ class OwnerController
         try {
         $owner = new Owner($name, $lastName, $birthDay, $email, $dni, $password);
        
-
+      
         $ownerDAO = new OwnerDAO();
         $ownerDAO->Add($owner);
         }catch (Exception $th) {

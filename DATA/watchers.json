@@ -1,12 +1,28 @@
 [
     {
-        "name": "Maxi",
-        "lastName": "Herrera",
-        "birthDay": "2002-04-07",
-        "email": "asd@asd.com",
-        "password": "123",
-        "petType": "perro",
-        "expectedPay": "123",
-        "reputation": null
+        "idwatchers": 0,
+        "name": "watcher",
+        "lastName": "dao",
+        "birthDay": "1965-03-12",
+        "email": "wd@gmail.com",
+        "password": "wd",
+        "dni": "412124",
+        "petType": "",
+        "expectedPay": 0,
+        "reputation": 0,
+        "sizecare": ""
+    },
+    {
+        "idwatchers": 1,
+        "name": "guardian",
+        "lastName": "json",
+        "birthDay": "1967-11-02",
+        "email": "gj@gmail.com",
+        "password": "gj",
+        "dni": "4124231",
+        "petType": "",
+        "expectedPay": 0,
+        "reputation": 0,
+        "sizecare": ""
     }
 ]

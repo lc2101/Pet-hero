@@ -1,20 +1,29 @@
 [
     {
-        "name": "Maxi",
-        "lastName": "Herrera",
-        "birthDay": "2022-05-01",
-        "email": "qqq@qqq.com",
-        "password": "123",
-        "petList": null,
-        "reputation": null
+        "idowners": 0,
+        "name": "json",
+        "lastName": "owner",
+        "birthDay": "1999-02-21",
+        "email": "jwoner@gmail.com",
+        "password": "jo",
+        "dni": "42454592"
     },
     {
-        "name": "jose",
-        "lastName": "marta",
-        "birthDay": "2022-10-13",
-        "email": "12@12.com",
-        "password": "123",
-        "petList": null,
-        "reputation": null
+        "idowners": 1,
+        "name": "marcos",
+        "lastName": "json",
+        "birthDay": "1996-11-23",
+        "email": "mj@gmail.com",
+        "password": "mj",
+        "dni": "123131"
+    },
+    {
+        "idowners": 2,
+        "name": "lu",
+        "lastName": "json",
+        "birthDay": "1956-03-21",
+        "email": "lj@gmail.com",
+        "password": "lj",
+        "dni": "3213121"
     }
 ]

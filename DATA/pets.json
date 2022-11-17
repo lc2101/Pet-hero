@@ -1,3 +1,26 @@
 [
-    
+    {
+        "idpets": 0,
+        "name": "json",
+        "idowners": 0,
+        "age": "2",
+        "specie": "cat",
+        "size": "peque\u00f1o"
+    },
+    {
+        "idpets": 1,
+        "name": "json",
+        "idowners": 0,
+        "age": "2",
+        "specie": "cat",
+        "size": "peque\u00f1o"
+    },
+    {
+        "idpets": 2,
+        "name": "json2",
+        "idowners": 0,
+        "age": "4",
+        "specie": "dog",
+        "size": "mediano"
+    }
 ]

@@ -12,30 +12,29 @@ class PetDAO implements IPet
     {
         $this->retrieveData();
         
-        array_push($this->ownerList, $owner);
+        array_push($this->petList, $pet);
         $this->saveData();
     }
     public function GetAll()
     {
         $this->retrieveData();
-        return $this->ownerList;
+        return $this->petList;
     }
     //PHP TO JSON
     private function saveData()
     {
         $arrayToEncode= array();
-        foreach($this->ownerList as $Owner)
+        foreach($this->petList as $pet)
         {
-            $valuesArray["idowners"] = sizeof($arrayToEncode);
-            $valuesArray["name"]= $Owner->getName();
-            $valuesArray["lastName"]= $Owner->getLastName();
-            $valuesArray["birthDay"]= $Owner->getBirthDay();
-            $valuesArray["email"]= $Owner->getEmail();
-            $valuesArray["password"]= $Owner->getPassword();
-            $valuesArray["dni"] = $Owner->getDni(); 
-            
+                      
+            $parameters["idpets"] = sizeof($arrayToEncode);
+            $parameters["name"] = $pet->getName();
+            $parameters["idowners"] = $pet->getOwner_id();
+            $parameters["age"] = $pet->getAge();
+            $parameters["specie"] = $pet->getSpecie();
+            $parameters["size"] = $pet->getSize();
                        
-            array_push($arrayToEncode, $valuesArray);
+            array_push($arrayToEncode, $parameters);
         }
         $jsonContent= json_encode($arrayToEncode, JSON_PRETTY_PRINT);
         file_put_contents($this->fileName, $jsonContent);
@@ -43,49 +42,47 @@ class PetDAO implements IPet
     //JSON TO PHP
     private function retrieveData()
     {
-        $this->ownerList= array();
+        $this->petList= array();
         if(file_exists($this->fileName))
         {
             $jsonContent= file_get_contents($this->fileName);
             $arrayToDecode= ($jsonContent) ? json_decode($jsonContent, true) : array();
 
-            foreach ($arrayToDecode as $valuesArray) {
-                $Owner= new Owner($valuesArray["name"],$valuesArray["lastName"],$valuesArray["birthDay"],$valuesArray["email"],$valuesArray["dni"],$valuesArray["password"],$valuesArray["idowners"]);
-                array_push($this->ownerList, $Owner);
+            foreach ($arrayToDecode as $row) {
+                $pet = new Pet($row['name'],$row['idowners'],$row['age'],
+                $row['specie'],$row['size'],$row['idpets']); 
+                array_push($this->petList, $pet);
             }
         }
     }
     public function GetById($id)
      {
         $this->RetrieveData();
-        $owner=NULL;
+        $pet=NULL;
 
-        foreach($this->ownerList as $Owner)
+        foreach($this->petList as $Pet)
         {
-            if($Owner->getId()=== $id)
+            if($Pet->getId()=== $id)
             {
-                $owner=$Owner;
+                $pet=$pet;
             }
         }
-        return $owner;
+        return $pet;
         
     }
-    public function GetByEmail($email)
-    {
+    public function GetByOwnerId($id)
+     {
         $this->RetrieveData();
-        
-        $owner=NULL;
-        
-        foreach($this->ownerList as $Owner)
+        $petList=array();
+
+        foreach($this->petList as $Pet)
         {
-            
-            if($Owner->getEmail()=== $email)
+            if($Pet->getOwner_id()=== $id)
             {
-                
-                $owner=$Owner;
+                array_push($petList, $Pet);
             }
         }
-        return $owner;
+        return $petList;
         
     }
 }

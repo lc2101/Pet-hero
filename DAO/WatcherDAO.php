@@ -120,6 +120,29 @@
 
            
         }
+        public function Edit(Watcher $watcherE)
+        {
+            try {
+                $query= "UPDATE watchers SET idwatchers=:idwatchers, name=:name, lastName=:lastName,
+                 birthDay=:birthDay, email=:email, dni=:dni, reputation=:reputation, password=:password, petType=:petType, expectedPay=:expectedPay, sizecare=:sizecare WHERE idwatchers=:idwatchers";
+
+                $parameters["idwatchers"] = $watcherE->getId();
+                $parameters["name"] = $watcherE->getName();
+                $parameters["lastName"] = $watcherE->getLastName();
+                $parameters["birthDay"] = $watcherE->getBirthDay();
+                $parameters["email"] = $watcherE->getEmail();
+                $parameters["dni"] = $watcherE->getDni();         
+                $parameters["reputation"] = $watcherE->getReputation();
+                $parameters["password"] = $watcherE->getPassword();
+                $parameters["petType"] = $watcherE->getPetType();
+                $parameters["expectedPay"] = $watcherE->getExpectedPay();
+                $parameters["sizecare"] = $watcherE->getSizecare();
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            } catch (Exception $th) {
+                throw $th;
+            }
+        }
  }
  
  

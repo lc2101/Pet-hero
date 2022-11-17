@@ -49,6 +49,10 @@ class OwnerController
        
         
     }
+    public function Edit()
+    {
+        
+    }
     
     
 

@@ -85,6 +85,26 @@ class PetDAO implements IPet
         return $petList;
         
     }
+    public function Edit(Pet $petE)
+    {
+        $this->RetrieveData();
+        
+               
+        foreach($this->petList as $Pet)
+        {
+            
+            if($Pet->getId()=== $petE->getId())
+            {
+                
+                $Pet=$petE;
+            }else{
+                throw new Exception("Id No encontrado");
+                
+            }
+        }
+        $this->saveData();
+        
+    }
 }
 
 

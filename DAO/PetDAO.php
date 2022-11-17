@@ -121,6 +121,33 @@
             }
             
         }
+        public function Edit(Pet $petE)
+        {
+            try
+            {
+                $query = "UPDATE pets SET idpets=:idpets, name=:name, idowners=:idowners, age=:age, specie=:specie, size=:size
+                WHERE idpets=:idpets";
+
+                $parameters["idpets"] = $petE->getId();
+                $parameters["name"] = $petE->getName();
+                $parameters["idowners"] = $petE->getOwner_id();
+                $parameters["age"] = $petE->getAge();
+                $parameters["specie"] = $petE->getSpecie();
+                $parameters["size"] = $petE->getSize();
+                
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+                
+            }
+            catch (Exception $e)
+            {
+                throw $e;
+            }
+
+
+        }
     
     
     

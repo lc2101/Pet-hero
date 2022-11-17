@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="estilo.css">
     <link rel="icon" href="Views/favicon.ico">
 </head>
+<?php $alert?>
 <body>
     <div>
         <form action=<?php echo FRONT_ROOT ."Home/LogIn"?> method="post">
@@ -27,6 +28,7 @@
     <div>
     <a href=<?php echo FRONT_ROOT ."View/ShowAccountType"?>>Sing In</a>
     </div>
+    <?php if($alert!=NULL){echo $alert["text"];}  ?>
     
     
 </body>

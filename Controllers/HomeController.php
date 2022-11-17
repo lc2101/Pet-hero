@@ -50,9 +50,12 @@
                 
             }catch(Exception $e){
                 
-                
+                $alert = [
+                    "type" => "danger",
+                    "text" => $e->getMessage()
+                ];
                 require_once(VIEWS_PATH . "LogIn.php");
-                echo($e->getMessage());
+                
                 
                
             }

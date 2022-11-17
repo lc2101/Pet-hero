@@ -123,6 +123,25 @@ class OwnerDAO implements IOwner
 
            
         }
+        public function Edit(Owner $ownerE)
+        {
+            try {
+                $query= "UPDATE owners SET idowners=:idowners, name=:name, lastName=:lastName,
+                 birthDay=:birthDay, email=:email, dni=:dni, password=:password WHERE idowners=:idowners";
+
+                $parameters["idowners"] = $ownerE->getId();
+                $parameters["name"] = $ownerE->getName();
+                $parameters["lastName"] = $ownerE->getLastName();
+                $parameters["birthDay"] = $ownerE->getBirthDay();
+                $parameters["email"] = $ownerE->getEmail();
+                $parameters["dni"] = $ownerE->getDni();         
+                $parameters["password"] = $ownerE->getPassword();
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            } catch (Exception $th) {
+                throw $th;
+            }
+        }
        
     
 }

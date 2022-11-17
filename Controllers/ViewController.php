@@ -35,7 +35,11 @@ class ViewController
         {
          require_once(VIEWS_PATH."NewPet.php");
         }
-
+        public function EditWatcher()
+        {
+         require_once(VIEWS_PATH."edit-watcher.php");
+        }
+        
 
 }
 

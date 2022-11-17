@@ -27,6 +27,10 @@ class ViewController
         {
          require_once(VIEWS_PATH."ownerPetList.php");
         }
+        public function ShowWatcherList()
+        {
+         require_once(VIEWS_PATH."watcher-List.php");
+        }
         public function NewPet()
         {
          require_once(VIEWS_PATH."NewPet.php");

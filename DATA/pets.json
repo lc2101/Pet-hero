@@ -22,5 +22,13 @@
         "age": "4",
         "specie": "dog",
         "size": "mediano"
+    },
+    {
+        "idpets": 3,
+        "name": "ds",
+        "idowners": 1,
+        "age": "3",
+        "specie": "cat",
+        "size": "peque\u00f1o"
     }
 ]

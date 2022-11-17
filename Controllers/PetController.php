@@ -24,6 +24,8 @@ class PetController
              
             throw $ex;
             }
+        }else{
+            require_once FRONT_ROOT. "View/ShowLogIn";
         }
     
     }

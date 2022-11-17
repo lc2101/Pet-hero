@@ -1,17 +1,4 @@
-<?php
-    require_once("../Config/Autoload.php");
-    use Models\Owner as Owner;
-    use Repository\WatcherRepository as WatcherRepository;
-    session_start();
-    if(isset($_SESSION["loggedUser"]))
-    {
-        $loggedUser= $_SESSION["loggedUser"];
-    }else{
-        header("location:login.php");
-    }
-    $list= new WatcherRepository();
-    
-   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +39,7 @@
             <tbody>                  
                     
                  <?php
-                    foreach ($list->getAll() as $guardian) { 
+                    foreach ($watcherList as $guardian) { 
                          ?>
                          <tr>
                             <td><?php echo $guardian->getName()?></td>
@@ -64,11 +51,7 @@
                                 echo $guardian->getReputation();
                             }
                             ?></td>
-                            <td><?php if($guardian->getAvailability() == false){
-                                    echo "Ocupado";
-                                }else{
-                                    echo "Disponible";
-                                }?></td>
+                           
                          </tr>
                          <?php
                         }
@@ -79,7 +62,7 @@
             ?>
         </table>
     </section>
-    <a href="mainOwner.php">Atrás</a>
+    <a href=<?php echo FRONT_ROOT ."Owner/HomeOwner"?>>Atrás</a>
 
 </body>
 </html>

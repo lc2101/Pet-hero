@@ -13,7 +13,7 @@
         <header>
             <div class="nav-box">
                 <nav>
-                    <a href=<?php echo FRONT_ROOT ."Owner/WatcherList"?>>Listado de Guardianes</a>
+                    <a href=<?php echo FRONT_ROOT ."Watcher/WatcherList"?>>Listado de Guardianes</a>
                     <a href=<?php echo FRONT_ROOT ."Pet/OwnerPetList"?>>Lista Mascotas</a>
                     <form action="<?php echo FRONT_ROOT . "Home/LogOut" ?>" method="post">
                     <button type="submit">LogOut</button>

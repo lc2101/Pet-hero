@@ -48,7 +48,22 @@ class WatcherController
     }
     public function WatcherList()
     {
-
+        if (isset($_SESSION['id']))
+        {
+            $watcherDAO = new WatcherDAO();
+        
+            try{
+            
+            $watcherList=$watcherDAO->GetAll();
+            
+            require_once(VIEWS_PATH."watcher-List.php");
+            }catch(Exception $ex){
+             
+            throw $ex;
+            }
+        }else{
+            require_once FRONT_ROOT. "View/ShowLogIn";
+        }
     }
     
 

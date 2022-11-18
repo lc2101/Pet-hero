@@ -104,7 +104,7 @@ class WatcherController
             $watcherE=new Watcher($name, $lastName, $birthDay, $email, $dni, $password,
             $watcher->getId(), $petType, $expectedPay, $watcher->getReputation(), $sizecare);
             $watcherDAO->Edit($watcherE);                
-            require_once(VIEWS_PATH."edit-watcher.php");
+            header("location: " .FRONT_ROOT . "Watcher/EditWatcher");
             }catch(Exception $ex){
                 
                 echo $ex->getMessage();

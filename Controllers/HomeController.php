@@ -3,8 +3,10 @@
     use Models\Watcher as Watcher;
     use Models\Owner as Owner;
     use Models\Pet as Pet;
-    use JDAO\OwnerDAO as OwnerDAO;
-    use JDAO\WatcherDAO as WatcherDAO;
+    // use JDAO\OwnerDAO as OwnerDAO;
+    // use JDAO\WatcherDAO as WatcherDAO;
+    use DAO\OwnerDAO as OwnerDAO;
+    use DAO\WatcherDAO as WatcherDAO;
     use \Exception as Exception;
 
     class HomeController

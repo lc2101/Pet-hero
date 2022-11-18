@@ -28,7 +28,7 @@
     <div>
     <a href=<?php echo FRONT_ROOT ."View/ShowAccountType"?>>Sing In</a>
     </div>
-    <?php if($alert!=NULL){echo $alert["text"];}  ?>
+   
     
     
 </body>

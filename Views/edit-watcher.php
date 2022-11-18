@@ -39,19 +39,21 @@
             </div>
              <div>
             <label for="petType">Especie</label>
-            <select name="petType" value=<?php echo $watcher->getPetType()?>>
-                <option value="cat">gato</option>
-                <option value="dog">perro</option>
-                <option value="both">ambos</option>
+            <select name="petType">
+                <option value=<?php echo $watcher->getPetType()?>><?php echo $watcher->getPetType()?></option>
+                <option value="cat">cat</option>
+                <option value="dog">dog</option>
+                <option value="both">both</option>
             </select>           
             </div>
             <div>
             <label for="sizecare">Tamaño</label>
             <select name="sizecare" value=<?php echo $watcher->getSizecare()?>>
-                <option value="pequeño">Pequeño</option>
-                <option value="mediano">Mediano</option>
-                <option value="grande">Grande</option>
-                <option value="cualquiera">Cualquiera</option>
+                <option value=<?php echo $watcher->getSizecare()?>><?php echo $watcher->getSizecare()?></option>
+                <option value="pequeño">pequeño</option>
+                <option value="mediano">mediano</option>
+                <option value="grande">grande</option>
+                <option value="cualquiera">cualquiera</option>
             </select>           
             </div>
             <div>

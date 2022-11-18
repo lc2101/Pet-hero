@@ -98,23 +98,21 @@ class WatcherDAO implements IWatcher
     }
     public function Edit(Watcher $watcherE)
     {
-        //$this->RetrieveData();
+        
         
                
-        foreach($this->watcherList as $Watcher)
-        {
+        for($i=0; $i<sizeof($this->watcherList); $i++){ 
+                          
             
-           
-            if($Watcher->getId() === $watcherE->getId()){
-                echo"sadasdassda";
-                $Watcher=$watcherE;
-            }else{
-                throw new Exception("Id No encontrado");
+            if($this->watcherList[$i]->getId() === $watcherE->getId())
+            {
+                
+                $this->watcherList[$i]=$watcherE;
                 
             }
         }
         $this->saveData();
-        
+        $this->RetrieveData();
     }
 }
 

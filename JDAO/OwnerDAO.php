@@ -91,23 +91,20 @@ class OwnerDAO implements IOwner
     }
     public function Edit(Owner $ownerE)
     {
-        $this->RetrieveData();
+       
         
                
-        foreach($this->ownerList as $Owner)
+        for ($i=0; $i <sizeof($this->ownerList); $i++) 
         {
             
-            if($Owner->getId()=== $ownerE->getId())
+            if($this->ownerList[$i]->getId()=== $ownerE->getId())
             {
                 
-                $Owner=$ownerE;
-            }else{
-                throw new Exception("Id No encontrado");
-                
+                $this->ownerList[$i]=$ownerE;
             }
         }
         $this->saveData();
-        
+         $this->RetrieveData();
     }
 }
 

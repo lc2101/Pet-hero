@@ -88,22 +88,21 @@ class PetDAO implements IPet
     }
     public function Edit(Pet $petE)
     {
-        $this->RetrieveData();
         
                
-        foreach($this->petList as $Pet)
-        {
+        for ($i=0; $i < sizeof($this->petList); $i++) 
+        { 
+           
+        
             
-            if($Pet->getId()=== $petE->getId())
+            if($this->petList[$i]->getId()=== $petE->getId())
             {
                 
-                $Pet=$petE;
-            }else{
-                throw new Exception("Id No encontrado");
-                
+                $this->petList[$i]=$petE;
             }
         }
         $this->saveData();
+        $this->RetrieveData();
         
     }
 }

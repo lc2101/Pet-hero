@@ -3,14 +3,14 @@
         "idwatchers": 0,
         "name": "watcher",
         "lastName": "dao",
-        "birthDay": "1965-03-12",
+        "birthDay": "1966-03-12",
         "email": "wd@gmail.com",
         "password": "wd",
-        "dni": "412124",
-        "petType": "",
-        "expectedPay": 0,
+        "dni": "412125",
+        "petType": "cat",
+        "expectedPay": "4",
         "reputation": 0,
-        "sizecare": ""
+        "sizecare": "peque\u00f1o"
     },
     {
         "idwatchers": 1,
@@ -24,5 +24,18 @@
         "expectedPay": 0,
         "reputation": 0,
         "sizecare": ""
+    },
+    {
+        "idwatchers": 2,
+        "name": "nuevo",
+        "lastName": "guardian",
+        "birthDay": "1998-03-12",
+        "email": "ng@gmail.com",
+        "password": "ng",
+        "dni": "4124132",
+        "petType": "cat",
+        "expectedPay": "2",
+        "reputation": 0,
+        "sizecare": "mediano"
     }
 ]

@@ -56,6 +56,7 @@
                     "type" => "danger",
                     "text" => $e->getMessage()
                 ];
+                
                 require_once(VIEWS_PATH . "LogIn.php");
                 
                 

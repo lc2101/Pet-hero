@@ -2,7 +2,8 @@
 namespace Controllers;
 
 use Models\Watcher as Watcher;
-use JDAO\WatcherDAO as WatcherDAO;
+// use JDAO\WatcherDAO as WatcherDAO;
+use DAO\WatcherDAO as WatcherDAO;
 use \Exception as Exception;
 
 class WatcherController 

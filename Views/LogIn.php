@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIn</title>
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="icon" href="Views/favicon.ico">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="icon" href="img/favicon.ico">
 </head>
-<?php $alert?>
+
 <body>
     <div>
         <form action=<?php echo FRONT_ROOT ."Home/LogIn"?> method="post">
@@ -28,8 +28,16 @@
     <div>
     <a href=<?php echo FRONT_ROOT ."View/ShowAccountType"?>>Sing In</a>
     </div>
-   
     
+    <?php
+        if (isset($alert)){
+        echo $alert["text"];}
+         ?>
+            
+            
+    
+   
+   
     
 </body>
 </html>

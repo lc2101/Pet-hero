@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Mascota</title>
-    <link rel="stylesheet" href="./owner-style.css">
+    <link rel="stylesheet" href="css/owner-style.css">
 </head>
 <body>
     <div>
@@ -33,7 +33,7 @@
                 <option value="grande">Grande</option>
             </select>           
         </div>
-
+    
         <div>
             <button type="submit">Enviar</button>
             <button type="reset">Resetear</button>

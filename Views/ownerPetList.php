@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetList</title>
-    <link rel="stylesheet" href="./owner-style.css">
+    <link rel="stylesheet" href="css/owner-style.css">
     <style>
         table {
         font-family: arial, sans-serif;
@@ -30,11 +30,12 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Especie</th>
                         <th>Edad</th>
                         <th>Tamaño</th>
-                        <th>Id</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -42,11 +43,12 @@
                     foreach ($petList as $mascota) { 
                          ?>
                          <tr>
+                            <td><?php echo $mascota->getId()?></td>
                             <td><?php echo $mascota->getName()?></td>
                             <td><?php echo $mascota->getSpecie()?></td>
                             <td><?php echo $mascota->getAge()?></td>
                             <td><?php echo $mascota->getSize()?></td>
-                            <td><?php echo $mascota->getId()?></td>
+                            
                          </tr>
                          <?php
                         }

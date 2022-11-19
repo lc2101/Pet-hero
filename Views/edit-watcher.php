@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sing In</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>EditWatcher</title>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
     <div>
@@ -60,6 +60,7 @@
             <label for="expectedPay">Paga Esperada</label>
             <input type="number" name="expectedPay" value=<?php echo $watcher->getExpectedPay()?>>
             </div>
+           
             <div>
             <button type="submit">Guardar</button>
             <a href=<?php echo FRONT_ROOT ."Watcher/HomeWatcher"?>>Atrás</a>

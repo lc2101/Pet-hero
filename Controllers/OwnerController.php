@@ -50,9 +50,53 @@ class OwnerController
        
         
     }
-    public function Edit()
-    {
+    public function EditOwner()
+    {    
         
+        
+        if (isset($_SESSION['id']))
+        {
+            
+           $ownerDAO = new OwnerDAO();
+                       
+            try {
+                $owner=$ownerDAO->getById($_SESSION['id']);
+                require_once(VIEWS_PATH."edit-owner.php");
+            
+            } catch (Exception $ex) {
+                
+                echo $ex->getMessage();
+            }
+             
+        }else
+            {
+            header("location: " . FRONT_ROOT . "View/ShowLogin");
+            }     
+           
+              
+    }
+    public function Edit($name, $lastName, $birthDay, $email, $dni, $password)
+    {
+        if (isset($_SESSION['id']))
+        {
+            
+            $ownerDAO = new OwnerDAO();
+            
+            try{
+                
+            $owner=$ownerDAO->getById($_SESSION['id']);
+            $ownerE=new Owner($name, $lastName, $birthDay, $email, $dni, $password, $owner->getId());                
+            $ownerDAO->Edit($ownerE); 
+            header("location: " .FRONT_ROOT . "Owner/EditOwner");
+            }catch(Exception $ex){
+                
+                echo $ex->getMessage();
+             }   
+            
+
+        }else{
+                require_once FRONT_ROOT. "View/ShowLogIn";
+        }
     }
     
     

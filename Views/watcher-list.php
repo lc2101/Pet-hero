@@ -36,6 +36,8 @@
                 <th>Paga</th>
                 <th>Reputacion</th>
                 <th>Email</th>
+                <th>Primer Dia</th>
+                <th>Ultimo Dia</th>
                 
                 <th></th>
             </tr>
@@ -52,6 +54,8 @@
                             <td><?php echo $guardian->getExpectedPay()?></td>
                             <td><?php echo $guardian->getReputation()?></td>
                             <td><?php echo $guardian->getEmail()?></td>
+                            <td><?php echo $guardian->getFirstDay()?></td>
+                            <td><?php echo $guardian->getLastDay()?></td>
                            
                          </tr>
                          <?php

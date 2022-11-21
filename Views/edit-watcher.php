@@ -60,6 +60,14 @@
             <label for="expectedPay">Paga Esperada</label>
             <input type="number" name="expectedPay" value=<?php echo $watcher->getExpectedPay()?>>
             </div>
+            <div>
+                <label for="firstDay">Primer Dia</label>
+                <input type="date" name="firstDay" min="<?php echo date("Y-m-d")?>" value=<?php echo $watcher->getFirstDay()?>>
+            </div>
+            <div>
+                <label for="lastDay">Ultimo Dia</label>
+                <input type="date" name="lastDay" min="<?php echo date("Y-m-d")?>" value=<?php echo $watcher->getLastDay()?>>
+            </div>
            
             <div>
             <button type="submit">Guardar</button>

@@ -37,7 +37,9 @@ class WatcherDAO implements IWatcher
             $valuesArray["petType"] = $Watcher->getPetType(); 
             $valuesArray["expectedPay"] = $Watcher->getExpectedPay(); 
             $valuesArray["reputation"] = $Watcher->getReputation(); 
-            $valuesArray["sizecare"] = $Watcher->getSizecare(); 
+            $valuesArray["sizecare"] = $Watcher->getSizecare();
+            $valuesArray["firstDay"] = $Watcher->getFirstDay();
+            $valuesArray["lastDay"] = $Watcher->getLastDay();
            
                        
             array_push($arrayToEncode, $valuesArray);
@@ -56,7 +58,7 @@ class WatcherDAO implements IWatcher
             
             foreach ($arrayToDecode as $valuesArray) {
                 $Watcher= new Watcher($valuesArray["name"],$valuesArray["lastName"],$valuesArray["birthDay"],$valuesArray["email"],$valuesArray["dni"],$valuesArray["password"],$valuesArray["idwatchers"],
-                $valuesArray["petType"],$valuesArray["expectedPay"],$valuesArray["reputation"],$valuesArray["sizecare"]);
+                $valuesArray["petType"],$valuesArray["expectedPay"],$valuesArray["reputation"],$valuesArray["sizecare"],$valuesArray["firstDay"],$valuesArray["lastDay"]);
                 array_push($this->watcherList, $Watcher);
                 
             }

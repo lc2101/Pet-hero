@@ -13,7 +13,11 @@
      public function Add(Watcher $watcher)
      {
         try {
-         $query= "INSERT INTO watchers (idwatchers, name, lastName, birthDay, email, dni, reputation, password, petType, expectedPay, sizecare) VALUES (:idwatchers, :name, :lastName, :birthDay, :email, :dni, :reputation, :password, :petType, :expectedPay, :sizecare)";
+         $query= "INSERT INTO watchers (idwatchers, name, lastName, birthDay,
+          email, dni, reputation, password, petType, expectedPay, sizecare,
+         firstDay, lastDay) VALUES (:idwatchers, :name, :lastName, :birthDay,
+          :email, :dni, :reputation, :password, :petType, :expectedPay, :sizecare,
+          :firstDay,:lastDay)";
                          
              $parameters["idwatchers"] = $watcher->getId();
              $parameters["name"] = $watcher->getName();
@@ -26,7 +30,8 @@
              $parameters["petType"] = $watcher->getPetType();
              $parameters["expectedPay"] = $watcher->getExpectedPay();
              $parameters["sizecare"] = $watcher->getSizecare();
-         
+             $parameters["firstDay"] = $watcher->getFirstDay();
+             $parameters["lastDay"] = $watcher->getLastDay();
              $this->connection = Connection::GetInstance();
              $this->connection->ExecuteNonQuery($query, $parameters);
         }catch (Exception $e)
@@ -47,7 +52,10 @@
                  
              foreach ($resultSet as $row) 
              {
-                 $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
+                 $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],
+                 $row["email"],$row["dni"],$row["password"],$row["idwatchers"],
+                 $row["petType"],$row["expectedPay"],$row["reputation"],
+                 $row["sizecare"],$row["firstDay"],$row["lastDay"]);
                  array_push($watchersList, $watcher);
              }
              return $watchersList;    
@@ -77,7 +85,9 @@
             }else{
                 foreach ($resultSet as $row) 
             {
-                $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
+                $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],
+                $row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],
+                $row["expectedPay"],$row["reputation"],$row["sizecare"],$row["firstDay"],$row["lastDay"]);
                 array_push($watchersList, $watcher);
             }
             return $watchersList[0];  
@@ -106,7 +116,9 @@
                 }else{
                     foreach($resultSet as $row) 
                 {
-                    $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],$row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],$row["expectedPay"],$row["reputation"],$row["sizecare"]);
+                    $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],
+                    $row["email"],$row["dni"],$row["password"],$row["idwatchers"],$row["petType"],
+                    $row["expectedPay"],$row["reputation"],$row["sizecare"],$row["firstDay"],$row["lastDay"]);
                     array_push($watchersList, $watcher);
                 }
 
@@ -124,7 +136,9 @@
         {
             try {
                 $query= "UPDATE watchers SET idwatchers=:idwatchers, name=:name, lastName=:lastName,
-                 birthDay=:birthDay, email=:email, dni=:dni, reputation=:reputation, password=:password, petType=:petType, expectedPay=:expectedPay, sizecare=:sizecare WHERE idwatchers=:idwatchers";
+                 birthDay=:birthDay, email=:email, dni=:dni, reputation=:reputation, password=:password,
+                  petType=:petType, expectedPay=:expectedPay, sizecare=:sizecare,
+                  firstDay=:firstDay, lastDay=:lastDay WHERE idwatchers=:idwatchers";
 
                 $parameters["idwatchers"] = $watcherE->getId();
                 $parameters["name"] = $watcherE->getName();
@@ -137,6 +151,8 @@
                 $parameters["petType"] = $watcherE->getPetType();
                 $parameters["expectedPay"] = $watcherE->getExpectedPay();
                 $parameters["sizecare"] = $watcherE->getSizecare();
+                $parameters["firstDay"] = $watcherE->getFirstDay();
+                $parameters["lastDay"] = $watcherE->getLastDay();
                 $this->connection = Connection::GetInstance();
                 $this->connection->ExecuteNonQuery($query, $parameters);
             } catch (Exception $th) {

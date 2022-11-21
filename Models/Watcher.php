@@ -9,8 +9,12 @@ class Watcher extends User
     private $reputation;//reputacion del cuidador, indica si es bueno haciendo su trabajo. 
     private $id;
     private $sizecare;
+    private $firstDay;
+    private $lastDay;
     
-    public function __construct($name, $lastName, $birthDay, $email, $dni, $password, $id=0, $petType="", $expectedPay=0, $reputation=0, $sizecare="")
+    public function __construct($name, $lastName, $birthDay, $email, $dni, $password,
+     $id=0, $petType="", $expectedPay=0, $reputation=0, $sizecare="",
+      $firstDay=NULL, $lastDay=NULL)
         {
             $this->name=$name;
             $this->lastName=$lastName;
@@ -23,6 +27,8 @@ class Watcher extends User
             $this->reputation=$reputation;
             $this->sizecare=$sizecare;
             $this->id=$id;
+            $this->firstDay=$firstDay;
+            $this->lastDay=$lastDay;
             
         }
     public function getPassword()
@@ -179,6 +185,46 @@ class Watcher extends User
     public function setDni($dni)
     {
         $this->dni = $dni;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstDay
+     */ 
+    public function getFirstDay()
+    {
+        return $this->firstDay;
+    }
+
+    /**
+     * Set the value of firstDay
+     *
+     * @return  self
+     */ 
+    public function setFirstDay($firstDay)
+    {
+        $this->firstDay = $firstDay;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastDay
+     */ 
+    public function getLastDay()
+    {
+        return $this->lastDay;
+    }
+
+    /**
+     * Set the value of lastDay
+     *
+     * @return  self
+     */ 
+    public function setLastDay($lastDay)
+    {
+        $this->lastDay = $lastDay;
 
         return $this;
     }

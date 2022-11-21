@@ -91,7 +91,8 @@ class WatcherController
             require_once FRONT_ROOT. "View/ShowLogIn";
         }
     }
-    public function Edit($name, $lastName, $birthDay, $email, $dni, $password, $petType, $expectedPay, $sizecare)
+    public function Edit($name, $lastName, $birthDay, $email, $dni, $password,
+     $petType, $expectedPay, $sizecare,$firstDay, $lastDay)
     {
         if (isset($_SESSION['id']))
         {
@@ -102,7 +103,8 @@ class WatcherController
                 
             $watcher=$watcherDAO->getById($_SESSION['id']);
             $watcherE=new Watcher($name, $lastName, $birthDay, $email, $dni, $password,
-            $watcher->getId(), $petType, $expectedPay, $watcher->getReputation(), $sizecare);
+            $watcher->getId(), $petType, $expectedPay, $watcher->getReputation(),
+            $sizecare,$firstDay, $lastDay);
             $watcherDAO->Edit($watcherE);                
             header("location: " .FRONT_ROOT . "Watcher/EditWatcher");
             }catch(Exception $ex){

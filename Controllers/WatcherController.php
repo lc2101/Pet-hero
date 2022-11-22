@@ -117,6 +117,30 @@ class WatcherController
                 require_once FRONT_ROOT. "View/ShowLogIn";
         }
     }
+    public function FilterByDates($first="", $last="")
+    {
+        if (isset($_SESSION['id']))
+        {
+            $watcherDAO = new WatcherDAO();
+        
+            try{
+            if($first!=NULL && $last!=NULL)
+            {
+               $watcherList=$watcherDAO->FilterByDates($first, $last); 
+            }else{
+            $watcherList=$watcherDAO->GetAll();
+            }
+            
+            
+            require_once(VIEWS_PATH."watcher-list.php");
+            }catch(Exception $ex){
+             
+            throw $ex;
+            }
+        }else{
+            require_once FRONT_ROOT. "View/ShowLogIn";
+        }
+    }
     
 
 

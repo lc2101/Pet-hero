@@ -12,24 +12,24 @@
         <form action="<?php echo FRONT_ROOT . "Pet/Edit" ?>" method="post">
         <div>
             <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" value=<?php $pet->getName()?>>
+            <input type="text" name="name" value=<?php echo $pet->getName()?>>
         </div>
         <div>
             <label for="specie">Especie</label>
-            <select name="specie" id="specie">
-                <option value="<?php $pet->getSpecie()?>"><?php $pet->getSpecie()?></option>
+            <select name="specie">
+                <option value="<?php echo $pet->getSpecie()?>"><?php echo $pet->getSpecie()?></option>
                 <option value="cat">gato</option>
                 <option value="dog">perro</option>
             </select>           
         </div>
         <div>
             <label for="age">Edad</label>
-            <input type="number" name="age" id="age" value=<?php $pet->getAge()?>>
+            <input type="number" name="age" value=<?php echo $pet->getAge()?>>
         </div>
         <div>
             <label for="size">Tamaño</label>
-            <select name="size" id="size">
-                <option value="<?php $pet->getSize()?>"><?php $pet->getSize()?></option>
+            <select name="size">
+                <option value="<?php echo $pet->getSize()?>"><?php echo $pet->getSize()?></option>
                 <option value="pequeño">Pequeño</option>
                 <option value="mediano">Mediano</option>
                 <option value="grande">Grande</option>
@@ -37,7 +37,7 @@
         </div>
     
         <div>
-            <button type="submit">Guardar</button>
+            <button type="submit" name="id" value=<?php echo $pet->getId()?>>Guardar</button>
         </div>
         <a href=<?php echo FRONT_ROOT ."Pet/OwnerPetList"?>>Atrás</a>
         </form>

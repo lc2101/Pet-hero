@@ -39,6 +39,10 @@ class ViewController
         {
          require_once(VIEWS_PATH."edit-watcher.php");
         }
+        public function ViewReservation()
+        {
+         require_once(VIEWS_PATH."MakeReservation.php");
+        }
         
 
 }

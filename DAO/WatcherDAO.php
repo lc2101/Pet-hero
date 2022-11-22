@@ -159,7 +159,35 @@
                 throw $th;
             }
         }
- }
+
+        public function FilterByDates($first, $last)
+            {
+                $watchersList = array();
+                try {
+                    $this->connection = Connection::GetInstance();
+                    $query = "SELECT * FROM watchers WHERE firstDay<=:first AND firstDay<=:last
+                    AND lastDay>=:last AND lastDay>=:first";
+                    $parameters["first"]=$first;
+                    $parameters["last"]=$last;
+
+                    $resultSet = $this->connection->Execute($query, $parameters);
+                        
+                    foreach ($resultSet as $row) 
+                    {
+                        $watcher= new Watcher($row["name"],$row["lastName"],$row["birthDay"],
+                        $row["email"],$row["dni"],$row["password"],$row["idwatchers"],
+                        $row["petType"],$row["expectedPay"],$row["reputation"],
+                        $row["sizecare"],$row["firstDay"],$row["lastDay"]);
+                        array_push($watchersList, $watcher);
+                    }
+                    return $watchersList;   
+                } catch (Exception $th) {
+                    throw $th;
+                }
+            }
+        
+}
+
  
  
      

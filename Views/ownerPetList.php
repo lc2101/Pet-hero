@@ -48,6 +48,12 @@
                             <td><?php echo $mascota->getSpecie()?></td>
                             <td><?php echo $mascota->getAge()?></td>
                             <td><?php echo $mascota->getSize()?></td>
+                            <td><form action="<?php echo FRONT_ROOT . "Pet/EditPet" ?>" method="post">
+                            <button type="submit" name="id" value=<?php echo $mascota->getId()?>>Editar</button>
+                            </form></td>
+                            <td><form action="<?php echo FRONT_ROOT . "Pet/EditPet" ?>" method="post">
+                            <button type="submit" name="id" value=<?php echo $mascota->getId()?>>Buscar Guardián</button>
+                            </form></td>
                             
                          </tr>
                          <?php

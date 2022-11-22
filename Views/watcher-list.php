@@ -56,6 +56,9 @@
                             <td><?php echo $guardian->getEmail()?></td>
                             <td><?php echo $guardian->getFirstDay()?></td>
                             <td><?php echo $guardian->getLastDay()?></td>
+                            <td><form action="<?php echo FRONT_ROOT . "Pet/EditPet" ?>" method="post">
+                            <button type="submit" name="id" value=<?php echo $guardian->getId()?>>Iniciar Reservación</button>
+                            </form></td>
                            
                          </tr>
                          <?php
@@ -66,6 +69,23 @@
            
             ?>
         </table>
+        <div>
+            <form action="<?php echo FRONT_ROOT ."Watcher/FilterByDates"?>" method="post">
+            <label for="first">Inicio</label>
+            <input type="date" name="first" min="<?php echo date("Y-m-d"); ?>">
+            <label for="last">Fin</label>
+            <input type="date" name="last" min="<?php echo date("Y-m-d"); ?>">
+            <button type="submit">Filtrar</button>
+        
+        
+        </form>
+        </div>
+
+        <?php
+        if (isset($alert)){
+        echo $alert["text"];}
+         ?>
+            
     </section>
     <a href=<?php echo FRONT_ROOT ."Owner/HomeOwner"?>>Atrás</a>
 

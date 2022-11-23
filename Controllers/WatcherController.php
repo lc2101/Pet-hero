@@ -4,6 +4,7 @@ namespace Controllers;
 use Models\Watcher as Watcher;
 // use JDAO\WatcherDAO as WatcherDAO;
 use DAO\WatcherDAO as WatcherDAO;
+use DAO\OwnerDAO as OwnerDAO;
 use \Exception as Exception;
 
 class WatcherController 
@@ -60,7 +61,11 @@ class WatcherController
     }
     public function Register($name, $lastName, $email, $password, $dni, $birthDay)
     {
-       
+        try {
+            $ownerDAO = new OwnerDAO();
+            $watcherDAO = new WatcherDAO();
+            if($ownerDAO->GetByEmail($email)===NULL && $watcherDAO->GetByEmail($email)===NULL)
+            {            
         try {
         $watcher = new Watcher($name, $lastName, $birthDay, $email, $dni, $password);        
         $watcherDAO = new WatcherDAO();
@@ -69,6 +74,18 @@ class WatcherController
             throw $th;
         }
         require_once(VIEWS_PATH . "LogIn.php");
+    }else{
+        throw new Exception("Ese email ya existe");
+        
+        
+    }
+}catch (Exception $th) {
+    $alert = [
+        "type" => "danger",
+        "text" => $th->getMessage()
+    ];
+    require_once(VIEWS_PATH . "watcher-signin.php");
+}
        
         
     }
@@ -128,7 +145,7 @@ class WatcherController
             {
                $watcherList=$watcherDAO->FilterByDates($first, $last); 
             }else{
-            $watcherList=$watcherDAO->GetAll();
+                $watcherList=$watcherDAO->GetAll();
             }
             
             

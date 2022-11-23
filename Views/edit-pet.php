@@ -35,6 +35,9 @@
                 <option value="grande">Grande</option>
             </select>           
         </div>
+        <div>
+            
+        </div>
     
         <div>
             <button type="submit" name="id" value=<?php echo $pet->getId()?>>Guardar</button>

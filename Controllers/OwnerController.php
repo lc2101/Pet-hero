@@ -4,6 +4,8 @@ namespace Controllers;
 use Models\Owner as Owner;
 // use JDAO\OwnerDAO as OwnerDAO;
 use DAO\OwnerDAO as OwnerDAO;
+use DAO\WatcherDAO as WatcherDAO;
+use DAO\PetDAO as PetDAO;
 use \Exception as Exception;
 
 class OwnerController 
@@ -36,18 +38,34 @@ class OwnerController
     }
     public function Register($name, $lastName, $email, $password, $dni, $birthDay)
     {
-       
+        try {
+        $ownerDAO = new OwnerDAO();
+        $watcherDAO = new WatcherDAO();
+        if($ownerDAO->GetByEmail($email)===NULL && $watcherDAO->GetByEmail($email)===NULL)
+        {
         try {
         $owner = new Owner($name, $lastName, $birthDay, $email, $dni, $password);
-       
+        
       
-        $ownerDAO = new OwnerDAO();
+        
         $ownerDAO->Add($owner);
         }catch (Exception $th) {
             throw $th;
         }
         require_once(VIEWS_PATH . "LogIn.php");
-       
+        }else{
+            throw new Exception("Ese email ya existe");
+            
+            
+        }
+    }catch (Exception $th) {
+        $alert = [
+            "type" => "danger",
+            "text" => $th->getMessage()
+        ];
+        require_once(VIEWS_PATH . "owner-signin.php");
+    }
+              
         
     }
     public function EditOwner()
@@ -98,7 +116,26 @@ class OwnerController
                 require_once FRONT_ROOT. "View/ShowLogIn";
         }
     }
-    
+    public function MakeReservation($idW)
+        {
+        if (isset($_SESSION['id']))       
+        {
+            $petDAO = new PetDAO();
+            $watcherDAO= new WatcherDAO();
+            try{
+            
+            $petList = $petDAO->GetByOwnerId($_SESSION['id']);
+            $watcher=$watcherDAO->getById($idW);
+            
+            require_once(VIEWS_PATH."MakeReservation.php");
+            }catch(Exception $ex){
+             
+            throw $ex;
+            }
+        }else{
+            require_once FRONT_ROOT. "View/ShowLogIn";
+        }
+    }
     
 
 

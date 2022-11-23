@@ -46,7 +46,8 @@
                 $resultSet = $this->connection->Execute($query);
                 foreach ($resultSet as $row) 
                 {
-                    $pet = $this->LoadData($row);
+                    $pet = new Pet($row['name'],$row['idowners'],$row['age'],
+                    $row['specie'],$row['size'],$row['idpets']);
                     array_push($petList, $pet);
                 }
                 return $petList;
@@ -76,8 +77,15 @@
                     $row['specie'],$row['size'],$row['idpets']);
                     array_push($petList, $pet);
                 }
-
-                return $petList[0];
+                if(!empty($petList))
+                {
+                    return $petList[0];
+                }else
+                {
+                    throw new Exception("No se encontró la mascota");
+                    
+                }
+                
             } 
             catch (Exception $e) 
             {

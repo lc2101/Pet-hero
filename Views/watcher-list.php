@@ -56,8 +56,8 @@
                             <td><?php echo $guardian->getEmail()?></td>
                             <td><?php echo $guardian->getFirstDay()?></td>
                             <td><?php echo $guardian->getLastDay()?></td>
-                            <td><form action="<?php echo FRONT_ROOT . "Pet/EditPet" ?>" method="post">
-                            <button type="submit" name="id" value=<?php echo $guardian->getId()?>>Iniciar Reservación</button>
+                            <td><form action="<?php echo FRONT_ROOT . "Owner/MakeReservation" ?>" method="post">
+                            <button type="submit" name="idW" value=<?php echo $guardian->getId()?>>Iniciar Reservación</button>
                             </form></td>
                            
                          </tr>

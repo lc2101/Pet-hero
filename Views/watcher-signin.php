@@ -43,5 +43,10 @@
         </form> 
     </div>
 </body>
+<?php
+        if (isset($alert)){
+        echo $alert["text"];}
+         ?>
+            
 </html>
 

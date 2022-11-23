@@ -16,6 +16,7 @@
                     <a href=<?php echo FRONT_ROOT . "Owner/EditOwner"?>>Perfil</a>
                     <a href=<?php echo FRONT_ROOT ."Watcher/WatcherList"?>>Listado de Guardianes</a>
                     <a href=<?php echo FRONT_ROOT ."Pet/OwnerPetList"?>>Lista Mascotas</a>
+                    <a href=<?php echo FRONT_ROOT . "Reservation/OwnerReservations"?>>Reservaciones</a>
                     <form action="<?php echo FRONT_ROOT . "Home/LogOut" ?>" method="post">
                     <button type="submit">LogOut</button>
                     </form>

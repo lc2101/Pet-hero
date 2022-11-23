@@ -161,7 +161,7 @@ class ReservationDAO
         try{
             
 
-            $query = "UPDATE reservations SET state = :state WHERE idreservations = :idreservations";
+            $query = "UPDATE reservations SET state = :state WHERE idreservations = :id";
 
             $parameters['id'] = $id;
             $parameters['state'] = $state;

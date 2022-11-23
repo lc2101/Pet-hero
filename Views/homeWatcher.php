@@ -13,7 +13,7 @@
             <div class="nav-box">
                 <nav>
                     <a href=<?php echo FRONT_ROOT . "Watcher/EditWatcher"?>>Perfil</a>
-
+                    <a href=<?php echo FRONT_ROOT . "Reservation/WatcherReservations"?>>Reservaciones</a>
                     <form action="<?php echo FRONT_ROOT . "Home/LogOut" ?>" method="post">
                     <button type="submit">LogOut</button>
                     </form>

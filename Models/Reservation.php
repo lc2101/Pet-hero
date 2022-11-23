@@ -12,8 +12,8 @@ class Reservation{
     private $state;
     
 
-    public function __construct($id=0, $idWatcher, $idPet, $idOwner, $firstDay,
-     $lastDay, $state=false)
+    public function __construct($idWatcher, $idPet, $idOwner, $firstDay,
+     $lastDay,$id=0, $state="indefinido")
     {
         $this->id = $id;
         $this->idWatcher = $idWatcher;

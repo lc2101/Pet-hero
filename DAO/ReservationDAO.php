@@ -12,14 +12,14 @@ class ReservationDAO
     public function Add(Reservation $reservation)
     {
        try {
-        $query= "INSERT INTO resrvations (idreservations, idwatchers,idpets,
+        $query= "INSERT INTO reservations (idreservations, idwatchers,idpets,
         idowners,firstDay,lastDay,state) VALUES (:idreservations, :idwatchers,
         :idpets,:idowners,:firstDay,:lastDay,:state)";
                         
             $parameters["idreservations"] = $reservation->getId();
-            $parameters["idwatchers"] = $reservation->getIdWatchers();
-            $parameters["idpets"] = $reservation->getIdPets();
-            $parameters["idowners"] = $reservation->getIdOwners();
+            $parameters["idwatchers"] = $reservation->getIdWatcher();
+            $parameters["idpets"] = $reservation->getIdPet();
+            $parameters["idowners"] = $reservation->getIdOwner();
             $parameters["firstDay"] = $reservation->getFirstDay();
             $parameters["lastDay"] = $reservation->getLastDay();         
             $parameters["state"] = $reservation->getState();
@@ -44,8 +44,9 @@ class ReservationDAO
                 
             foreach ($resultSet as $row) 
             {
-                $reservation= new Reservation($row["idreservations"],$row["idwatchers"],
-                $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],$row["state"]);
+                $reservation= new Reservation($row["idwatchers"],
+                $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],
+                $row["idreservations"],$row["state"]);
                 array_push($reservationsList, $reservation);
             }
             return $reservationsList;    
@@ -76,8 +77,9 @@ class ReservationDAO
            }else{
                foreach ($resultSet as $row) 
            {
-            $reservation= new Reservation($row["idreservations"],$row["idwatchers"],
-            $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],$row["state"]);
+            $reservation= new Reservation($row["idwatchers"],
+            $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],
+            $row["idreservations"], $row["state"]);
             array_push($reservationsList, $reservation);
            }
            return $reservationsList[0];  
@@ -105,19 +107,20 @@ class ReservationDAO
             }else{
             foreach ($resultSet as $row) 
             {
-             $reservation= new Reservation($row["idreservations"],$row["idwatchers"],
-             $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],$row["state"]);
+             $reservation= new Reservation($row["idwatchers"],
+             $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],
+             $row["idreservations"],$row["state"]);
              array_push($reservationsList, $reservation);
             }
             return $reservationsList;  
             }  
-           catch (Exception $e) 
-           {
-               throw $e;
-           }
+           
         
 
-        }  
+        }catch(Exception $e) 
+           {
+               throw $e;
+           }  
        
     }
     public function GetByOwner($id)
@@ -137,24 +140,25 @@ class ReservationDAO
             }else{
             foreach ($resultSet as $row) 
             {
-             $reservation= new Reservation($row["idreservations"],$row["idwatchers"],
-             $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],$row["state"]);
+             $reservation= new Reservation($row["idwatchers"],
+             $row["idpets"],$row["idowners"],$row["firstDay"],$row["lastDay"],
+             $row["idreservations"],$row["state"]);
              array_push($reservationsList, $reservation);
             }
             return $reservationsList;  
             }  
-           catch (Exception $e) 
-           {
-               throw $e;
-           }
+           
         
 
-        }  
+        } catch (Exception $e) 
+           {
+               throw $e;
+           } 
        
     }
     public function StateChange($id, $state)
     {
-        try {
+        try{
             
 
             $query = "UPDATE reservations SET state = :state WHERE idreservations = :idreservations";
@@ -163,7 +167,7 @@ class ReservationDAO
             $parameters['state'] = $state;
             $this->connection = Connection::GetInstance();
             $this->connection->Execute($query, $parameters);
-        } catch (Exception $e) {
+        }catch (Exception $e) {
             throw $e;
         }
     }

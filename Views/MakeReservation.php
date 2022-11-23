@@ -55,10 +55,10 @@
 </tbody>
 </table>
 
-<td><form action="<?php echo FRONT_ROOT . "Pet/EditPet" ?>" method="post">
+<td><form action="<?php echo FRONT_ROOT . "Reservation/NewReservation" ?>" method="post">
 
-<label for="pet">Seleccionar Mascota</label>
-<select name="pet">
+<label for="idPet">Seleccionar Mascota</label>
+<select name="idPet">
     <?php
     
     foreach($petList as $pet)
@@ -78,11 +78,11 @@
 ?>
 </select>
 <label for="first">Inicio</label>
-<input type="date" name="first" min="<?php echo $watcher->getFirstDay();?>" max="<?php echo $watcher->getLastDay();?>">
+<input type="date" name="firstDay" min="<?php echo $watcher->getFirstDay();?>" max="<?php echo $watcher->getLastDay();?>">
 <label for="last">Fin</label>
-<input type="date" name="last" min="<?php echo $watcher->getFirstDay();?>" max="<?php echo $watcher->getLastDay();?>">
+<input type="date" name="lastDay" min="<?php echo $watcher->getFirstDay();?>" max="<?php echo $watcher->getLastDay();?>">
     
-<button type="submit" name="id" value=<?php echo $watcher->getId()?>>Iniciar Reservación</button>
+<button type="submit" name="idWatcher" value=<?php echo $watcher->getId()?>>Iniciar Reservación</button>
 </form></td>
 <a href=<?php echo FRONT_ROOT ."Watcher/WatcherList"?>>Atrás</a>                                                      
 </body>
